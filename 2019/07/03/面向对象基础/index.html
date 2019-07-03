@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>面向对象基础 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="面向对象和面向过程 类 对象实例化与类加载 类的继承 方法重写与属性隐藏 关键字final 抽象类 接口 内部类 异常处理 包机制 抽象类和接口的应用  面向对象和过程 面向过程设计中 专注于解决问题 导致设计不合理 代码的间联系紧密  因此不利于代码维护(代码修改)。 面向过程设计中 各部分间类似于“量身定做” 致使别人无法使用 因此不利于代码重用。 与面向过程相反。 在面向对象设计中 代码易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象基础">
+<meta property="og:url" content="http://yoursite.com/2019/07/03/面向对象基础/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="面向对象和面向过程 类 对象实例化与类加载 类的继承 方法重写与属性隐藏 关键字final 抽象类 接口 内部类 异常处理 包机制 抽象类和接口的应用  面向对象和过程 面向过程设计中 专注于解决问题 导致设计不合理 代码的间联系紧密  因此不利于代码维护(代码修改)。 面向过程设计中 各部分间类似于“量身定做” 致使别人无法使用 因此不利于代码重用。 与面向过程相反。 在面向对象设计中 代码易">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-03T14:52:53.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="面向对象基础">
+<meta name="twitter:description" content="面向对象和面向过程 类 对象实例化与类加载 类的继承 方法重写与属性隐藏 关键字final 抽象类 接口 内部类 异常处理 包机制 抽象类和接口的应用  面向对象和过程 面向过程设计中 专注于解决问题 导致设计不合理 代码的间联系紧密  因此不利于代码维护(代码修改)。 面向过程设计中 各部分间类似于“量身定做” 致使别人无法使用 因此不利于代码重用。 与面向过程相反。 在面向对象设计中 代码易">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -144,157 +148,261 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="port-面向对象基础" class="article article-type-port " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      面向对象基础
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-port">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/03/面向对象基础/" class="archive-article-date">
+
+        
+        <a href="/2019/07/03/面向对象基础/" class="archive-article-date">
   	<time datetime="2019-07-03T07:50:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/03/面向对象基础/">面向对象基础</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>面向对象和面向过程</li>
+<li>类</li>
+<li>对象实例化与类加载</li>
+<li>类的继承</li>
+<li>方法重写与属性隐藏</li>
+<li>关键字final</li>
+<li>抽象类</li>
+<li>接口</li>
+<li>内部类</li>
+<li>异常处理</li>
+<li>包机制</li>
+<li>抽象类和接口的应用</li>
+</ul>
+<h3 id="面向对象和过程"><a href="#面向对象和过程" class="headerlink" title="面向对象和过程"></a>面向对象和过程</h3><ol>
+<li>面向过程设计中 专注于解决问题 导致设计不合理 代码的间联系紧密  因此不利于代码维护(代码修改)。</li>
+<li>面向过程设计中 各部分间类似于“量身定做” 致使别人无法使用 因此不利于代码重用。</li>
+<li>与面向过程相反。 在面向对象设计中 代码易维护、可重用。</li>
+<li>面向过程编程 还有一个特点：代码自顶向下 一步一步 顺序执行。(即 这一步做完后才进行下一步操作)。</li>
+<li>面向过程是面向对象的基础。 不管你怎么分析问题 一切的分析都结束后 仍然需要按照面向过程的编程思路 “自顶向下 一步一步 顺序执行”进行具体的编码。</li>
+<li>在大的方向上使用面向对象分析 在具体的实施阶段上 使用面向过程编程。</li>
+</ol>
+<h3 id="面向对象的三大特征"><a href="#面向对象的三大特征" class="headerlink" title="面向对象的三大特征"></a>面向对象的三大特征</h3><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p> 定义：所谓的封装性 就是指 使类中重要的东西对外部不可见。</p>
+<ul>
+<li>作用：保护类中的属性不被外部直接访问。</li>
+<li>意义：</li>
+<li>封装性的第一个优点 ：保护数据安全。</li>
+<li>封装的第二个优点 ：封装复杂度 </li>
+</ul>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>子类继承父类的属性和方法 </p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>静态的多态  方法重载<br>动态的多态  方法重写</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类：就是对一群事或物 共有特征和行为的抽象。它是抽象的、不是客观存在的。它是一个模板、一张图纸<br>人类<br>特征： 姓名、年龄、性别<br>行为： 说话、吃饭、学习、工作 </p>
+<p>鸟类<br>特征： 羽毛、翅膀<br>行为： 飞翔、下蛋</p>
+<p>对象：就是类的一个个体 一个具体的实例。它是具体的、客观存在的。它是类的一个样品、一个实物。    </p>
+<p>张三<br>    属性：张三、30岁、男<br>    行为：说话、吃饭、学习、工作        </p>
+<p>麻雀<br> 特征：灰色的羽毛、短小的翅膀<br> 行为：飞翔、下蛋</p>
+<h3 id="类的基本组成"><a href="#类的基本组成" class="headerlink" title="类的基本组成"></a>类的基本组成</h3><p>类的属性又称为：字段和成员变量。</p>
+<p>成员变量按 修饰符类型 分为：<br>实例变量  不用static修饰的变量 隶属于对象。<br>静态变量  使用static修饰的变量 隶属于类。</p>
+<p>成员变量按 数据类型 分为：<br>基本类型变量 各自拥有各自的默认值。<br>复合类型变量 默认值统一为null</p>
+<h3 id="访问权限限制"><a href="#访问权限限制" class="headerlink" title="访问权限限制"></a>访问权限限制</h3><p>访问修饰符 ： 就是起到限制别人访问本类中变量和方法的功能的修饰符。</p>
+<ol>
+<li>public    公开访问修饰符 权限最大 在任何地方都可以访问。</li>
+<li>protected 保护访问修饰符 权限第二 同一个包中的类和不同包的子类可访问。</li>
+<li>default   包访问修饰符 权限第三 同一个包中的类可访问。不给变量写访问修饰符 则就默认为包访问。如果使用default修饰变量 反而错了。 default只存在于switch、annotation等语句中。</li>
+<li>private  私有访问修饰符 权限最低 只有本类内部的代码才可以访问。</li>
+</ol>
+<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><ol>
+<li>方法重载时 方法的名称必须相同。</li>
+<li>方法重载时 方法的参数列表必须不相同。包括参数的个数、类型、顺序。也就是说两个同名的方法在这三项中至少要有一项互不相同。</li>
+<li>方法重载时 方法的返回值类型可以不相同。即方法重载只检查方法名称和参数列表。</li>
+</ol>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ol>
+<li>方法名必须和类名相同。</li>
+<li>构造方法没有返回值 也不是void。</li>
+<li>不能在构造方法中使用return返回一个内容。</li>
+<li>构造方法在实例化对象的时候( new的时候)被自动调用。</li>
+<li>Java会为每一个类提供一个默认的(无参)构造方法。</li>
+<li>如果一个类显式的定义了一个有参的构造方法 则Java不会在为其提供无参的构造方法。</li>
+<li>构造方法可以重载。 </li>
+</ol>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>static 变量        </p>
+<ul>
+<li>static定义的变量被称为类变量或静态变量。</li>
+<li>整个类中所有的对象 共用这个变量。 </li>
+<li>对象a改变这个变量的值 对象b再引用此变量的时候 引用的值 是已经改变之后的了。</li>
+<li>类名.变量名(推荐使用此方式)  或者  对象名.变量名。</li>
+<li>static修饰的变量 存在于 全局数据区。static不能修饰局部变量。    </li>
+</ul>
+<p>static 方法          </p>
+<ul>
+<li>static定义的方法被称为类方法或静态方法。</li>
+<li>调用方式：  类名.方法名(推荐使用此方式)  或者  对象名.方法名。</li>
+<li>static修饰的方法内部 只能访问静态成员(静态方法、变量) 不能访问实例成员。</li>
+<li>static 方法中不能使用this、super关键字。</li>
+<li>static方法可以被继承 但是不可以被重写，若子类存在一个和父类完全相同的一个方法，则父类的方法会被隐藏。 </li>
+</ul>
+<p>static 内部类        </p>
+<ul>
+<li>static修饰的内部类被称为 静态内部类。</li>
+</ul>
+<p>Static 修饰的成员 是隶属于类的。<br>即使程序中没有该类的对象存在 也可以通过类名引用该类静态变量和静态方法。<br>因此 static方法内不能引用实例成员。 因为 当前程序中可能还没有该类的对象存在。</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><h3 id="操作系统中内存的划分"><a href="#操作系统中内存的划分" class="headerlink" title="操作系统中内存的划分"></a>操作系统中内存的划分</h3><ol>
+<li>静态数据区：存放程序中的静态数据，如static变量、常量等。变量的内存地址在程序编译的时候就已经分配好，这块内存在程序的整个运行期间都存在。</li>
+<li>代码区：存放程序中源代码。如函数、语句等。</li>
+<li>栈：存放简单变量、对象的引用变量。当程序流程走出局部变量所在的代码块后，局部变量会被从栈中弹出。其所占内存会被操作系统自动回收。</li>
+<li>堆：存放程序动态申请的数据。如Java中的对象(的实例属性)和C语言使用malloc()函数申请的空间都保存在堆中。 保存在堆中的数据，由于是用户自己动态申请的空间，所以当堆中的数据不再需要被使用时，则应该由用户手工释放该数</li>
+</ol>
+<h3 id="堆和栈"><a href="#堆和栈" class="headerlink" title="堆和栈"></a>堆和栈</h3><p>在操作系统中，栈和堆的容量都是有限的。</p>
+<ul>
+<li>栈是内存中的一片连续的存储空间，类似于数组，每当需要为函数中局部变量开辟空间时，都会从栈中申请。</li>
+<li>若栈中的内存足够，则系统将为程序提供内存，否则将报异常并提示栈溢出。</li>
+<li>当函数执行完毕后，会按照后进先出的原则，将局部变量依次弹栈，并将释放出的资源加入到栈中的空闲内存中。</li>
+<li>堆是由内存中的多个分散的存储空间组成的一个不连续的存储空间，各个存储空间基于数据结构中的链表，而组织在一起。 </li>
+<li>当系统收到程序的空间申请时,会遍历该链表,寻找第一个空间大于所申请空间的堆结点,然后将该结点从空闲结点链表中删除,并将该结点的空间分配给程序。</li>
+</ul>
+<h3 id="堆和栈的优缺点"><a href="#堆和栈的优缺点" class="headerlink" title="堆和栈的优缺点"></a>堆和栈的优缺点</h3><p>栈: 由系统自动给变量分配空间，虽然分配空间的速度较快，但是容量固定。<br>堆：空间的大小由用户自定义，分配空间的速度一般比较慢，而且频繁的申请、释放空间容易产生内存碎片,不过用起来最方便。</p>
+<h3 id="内存-1"><a href="#内存-1" class="headerlink" title="内存"></a>内存</h3><p>内存溢出：通俗的说，就是当前操作系统中的剩余内存容量不足。<br>内存泄漏：通俗的说，堆中存在很多已经无用的空间，这些空间在被使用过后，没有被程序员释放，导致系统中明明存在可用的内存空间，却偏偏不能使用。<br>栈溢出：栈中剩余空闲空间不足以满足应用程序所需要的空间</p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>普通代码块 ： 在方法内部出现的代码块。<br>构造块  ：   在方法外 类内出现的代码块。 用于实例化成员变量。每产生一个对象 就会调用一次。<br>静态块  ：   在方法外 类内出现的 使用static修饰的代码块。用来初始化静态成员变量。 只会在类加载的时候调用一次。<br>同步代码块 ：多线程中使用的代码块。后述</p>
+<h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><p>定义：所谓的类加载 就是JVM将类加载到内存中。加载完毕后就可以在内存中建立这个类的对象。</p>
+<p>Java中 类加载发生在如下三种情况：</p>
+<ol>
+<li>创建一个类的对象。</li>
+<li>调用一个类的静态变量。</li>
+<li>调用一个类的静态方法。</li>
+</ol>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><p>Java中使用extends关键字来实现继承。<br>子类可以继承父类中的非private属性和方法。<br>在Java中不允许多继承。 一个子类只能有一个直接父类。通俗的说 就是一个人只能有一个亲爸。C++ 中允许有多继承。<br>在Java中可以使用多层继承。 一个子类可以有多个间接父类。通俗的说 一个人可以有 老爸、爷爷、祖宗。。。。。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/03/面向对象基础/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/03/java基础概括/" class="archive-article-date">
-  	<time datetime="2019-07-03T05:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/03/java基础概括/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java基础概括</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/03/java基础概括/">java基础概括</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/03/动画/" class="archive-article-date">
-  	<time datetime="2019-07-03T03:04:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/03/动画/">动画</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/03/android四大组件/" class="archive-article-date">
-  	<time datetime="2019-07-03T03:03:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/03/android四大组件/">android四大组件</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/03/java/" class="archive-article-date">
-  	<time datetime="2019-07-03T02:48:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/03/java/">&lt;h1 id=&#34;id_1&#34;&gt;java基础入门&lt;/h1&gt;</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -317,8 +425,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
