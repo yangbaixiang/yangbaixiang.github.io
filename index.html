@@ -146,6 +146,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-post泛型入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/07/post泛型入门/">泛型入门</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/07/post泛型入门/" class="archive-article-date">
+  	<time datetime="2019-07-07T09:49:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>泛型引入 </li>
+<li>泛型类</li>
+<li>通配符</li>
+<li>泛型方法</li>
+<li>泛型接口</li>
+<li>泛型嵌套 </li>
+</ul>
+<p>泛型代表一个广泛的类型，代表任意的类型，Object类也可以接受任意类型的对象，也可以代表任意的类型 </p>
+<p>泛型和Object类型的区别 ：<br>泛型代表一个可变的类型 一旦为其指定了一个具体的类型。则泛型就固定了。不能再更改了<br>Object类型代表一个可变的类型 在任何时间、地点都可以接受任何数据类型。</p>
+<h2 id="泛型的引出"><a href="#泛型的引出" class="headerlink" title="泛型的引出"></a>泛型的引出</h2><p>由于程序中的代码量大，代码就会很复杂，使人不知道某一对象在此时的具体类型是什么，很容易出现类型转换的错误，因此引出泛型。泛型的优点是不需要向下转型。</p>
+<h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><h3 id="简单泛型"><a href="#简单泛型" class="headerlink" title="简单泛型"></a>简单泛型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//泛型定义的格式 </span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 类名&lt;泛型类型&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T a ; </span><br><span class="line">    <span class="keyword">private</span> T b ;</span><br><span class="line">   <span class="comment">//.....省略set，get</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用上面A类</span></span><br><span class="line"></span><br><span class="line">A a = <span class="keyword">new</span> A&lt;String&gt;() ; </span><br><span class="line">String a1 = a.geta() ;  <span class="comment">//无需向下转型</span></span><br><span class="line">String b1 = a.getb();</span><br></pre></td></tr></table></figure>
+
+<p>泛型是在实例化对象的时候才为类中的属性指定具体的数据类型，是在类的外部指定的 </p>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A&lt;Object&gt; p1 = <span class="keyword">new</span> A&lt;Object&gt;();</span><br><span class="line">A&lt;Integer&gt; p2 = <span class="keyword">new</span> A&lt;Integer&gt;(<span class="number">5</span>,<span class="number">2</span>);</span><br><span class="line">p1 = p2;  <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+
+<p>在Java中可以将一个Integer对象赋值给一个Object对象，但是在泛型中是错误的做法，因为A<integer>是引用数据类型，不是Integer类型，同样A<object>不是Object类型，所以是错误的。</object></integer></p>
+<p>但是如果按下面的做法是可以的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Point&lt;?&gt; p1 = <span class="keyword">new</span> Point&lt;Object&gt;(<span class="number">12</span>,<span class="number">23</span>);</span><br><span class="line">Point&lt;?&gt; p2 = <span class="keyword">new</span> Point&lt;Integer&gt;(<span class="number">5</span>,<span class="number">2</span>);</span><br><span class="line">p1 = p2;</span><br></pre></td></tr></table></figure>
+
+<p>“?”表示可以接受任意的 A<t> 类型的对象，即：A&lt;?&gt; p = 任意A<t>数据类型”<br>“?”便被称为通配符，通配符是有缺陷的，只能引用不能修改 </t></t></p>
+<h2 id="泛型上限"><a href="#泛型上限" class="headerlink" title="泛型上限"></a>泛型上限</h2><p>限制泛型的取值范围，最高不能超过一个指定的类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示A类只能表示数字类型的</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T x;</span><br><span class="line">	<span class="keyword">private</span> T y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 泛型下限 </span><br><span class="line">限制泛型的取值范围，最低不能低于的一个指定的类型      </span><br><span class="line">设置泛型下界的方式只有一种：通过修改引用变量的取值，来限制泛型的下限</span><br><span class="line"></span><br><span class="line">``` java </span><br><span class="line">A&lt;? <span class="keyword">super</span> String&gt; p = <span class="keyword">new</span> A&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;  <span class="comment">//此类为 非泛型类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">(T a)</span></span>&#123;</span><br><span class="line">		System.out.println(a);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Demo</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">(A a)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现泛型接口的两种方式：1.定义类的同时为接口指定泛型的类型，2.类本事也是一个泛型 </p>
+<h2 id="泛型嵌套"><a href="#泛型嵌套" class="headerlink" title="泛型嵌套"></a>泛型嵌套</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/07/post泛型入门/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-java-IO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -534,7 +625,119 @@
 <li>通过java.util.regex包提供的对正则表达式的支持的两个类，达到对复杂匹配的目的<br>其中 ：Pattern类 定义一个正则表达式。 Matcher类 根据定义好的正则表达式 进行匹配。aa</li>
 </ol>
 <p>简单正则 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String regexExpress = <span class="string">"hi"</span>;		 <span class="comment">// 正则式。</span></span><br><span class="line">		String str1 =<span class="string">"hi"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		String str2 =<span class="string">"Hi"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		String str3 =<span class="string">"hi world, hi java!"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		<span class="comment">// 判断str是否符合regexExpress的要求。</span></span><br><span class="line">		System.out.println(str1.matches(regexExpress));<span class="comment">//true</span></span><br><span class="line">		System.out.println(str2.matches(regexExpress));<span class="comment">//false</span></span><br><span class="line">		System.out.println(str3.matches(regexExpress));<span class="comment">//false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//sting的matches方法，只有在匹配串完全满足正则式的情况下才会返回true</span></span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 正则的预定义字符串 </span><br><span class="line"></span><br><span class="line">表达式|描述</span><br><span class="line">--|:--:|</span><br><span class="line">.|任何字符（与行结束符可能匹配也可能不匹配）</span><br><span class="line">\d | 表示由数字组成。它等价于[<span class="number">0</span>-<span class="number">9</span>]。</span><br><span class="line">\D |表示由非数字组成。它等价于[^<span class="number">0</span>-<span class="number">9</span>]。</span><br><span class="line">\s | 表示由空白组成。空白包括空格，制表符(Tab)，换行符，中文全角空格等。它等价于[ \t\n\x0B\f\r]</span><br><span class="line">\S |表示由非空格组成。它等价于[^\s]。</span><br><span class="line">\w |表示由字母、数字、下划线组成。它等价于[a-zA-Z_0-<span class="number">9</span>]。</span><br><span class="line">\W |表示由非字母、数字、下划线组成。它等价于[^a-zA-Z_0-<span class="number">9</span>]。     </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Greedy数量词 </span><br><span class="line">Greedy数量词用来指定其所修饰的正则表达式所要连续出现的次数。</span><br><span class="line"></span><br><span class="line">表达式|描述</span><br><span class="line">--|:--:|</span><br><span class="line">？|表示正则表达式出现<span class="number">0</span> ~ <span class="number">1</span>次。</span><br><span class="line">*|表示正则表达式出现<span class="number">0</span> ~ n次。</span><br><span class="line">+|表示正则表达式出现<span class="number">1</span> ~ n次。</span><br><span class="line">&#123;n&#125;|表示正则表达式 正好连续出现n次。</span><br><span class="line">&#123;n,&#125;|表示正则表达式 连续出现“n&lt;=次数” 次。</span><br><span class="line">&#123;n,m&#125;|表示正则表达式 连续出现 “n&lt;= 次数&lt;=m ”次。</span><br><span class="line"></span><br><span class="line">### 字符类 </span><br><span class="line"></span><br><span class="line">表达式|描述</span><br><span class="line">--|:--:|</span><br><span class="line">[]|若待匹配字符 是中括号里列出的任意一个字符。 则返回<span class="keyword">true</span>。</span><br><span class="line">[^]|若待匹配字符 不是中括号里列出的任意一个字符。则返回<span class="keyword">true</span>。</span><br><span class="line">[a-z0-<span class="number">9</span>A-Z]|若待匹配字符 是a~z、A~Z、<span class="number">0</span>~<span class="number">9</span>之间则返回<span class="keyword">true</span>。(两头的字母包括在内)</span><br><span class="line">[a-d[m-p]]|若待匹配字符 是a~d或者m-p之间则返回<span class="keyword">true</span>。(两头的字母包括在内)即此处将“[m-p]”视为一个子集合。即并集。</span><br><span class="line">[a-z&amp;&amp;[def]]|若待匹配字符 是d、e、f则返回<span class="keyword">true</span>。(两头的字母包括在内)即取集合“a-z”与集合“def”的交集。</span><br><span class="line">[a-z&amp;&amp;[^bc]]|若待匹配字符 是a~z之间且不是b、c则返回<span class="keyword">true</span>。(两头的字母包括在内)</span><br><span class="line">[a-z&amp;&amp;[^m-p]]|若待匹配字符 是a~l或q~z之间则返回<span class="keyword">true</span>。(两头的字母包括在内)</span><br><span class="line"></span><br><span class="line">### 字符的转义</span><br><span class="line"></span><br><span class="line">若是想匹配元字符本身的话，比如“.”或者“*”。    </span><br><span class="line">那么就得使用“\”来取消这些字符的特殊意义。因此应该使用“\.” 和“\*”。当然要查找“\”本身，你也得用“\\”。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 逻辑运算</span><br><span class="line">正则表达式支持“或“运算 </span><br><span class="line">与<span class="string">"[]"</span>类似，或运算也是提供几种规则，如果满足其中任意一种规则都视为匹配成功，，其具体的方法是用“｜”把不同的规则分隔开</span><br><span class="line"></span><br><span class="line">### 组</span><br><span class="line">定义：在正则表达式中，组是一个或者多个基本的正则表达式组合在一起，构成一个大的正则表达式</span><br><span class="line"></span><br><span class="line">正则表达式中，组分为捕获组和非捕获组，捕获组又分为普通捕获组和命名捕获组</span><br><span class="line"></span><br><span class="line">捕获组：是用()把组中的正则表达式括起来，捕获组并不会影响正常的匹配功能 </span><br><span class="line"></span><br><span class="line">``` java </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String regexExpress = <span class="string">"&lt;(\\d+)&gt;Hello World!&lt;/\\1&gt;"</span>;	<span class="comment">// 正则式。</span></span><br><span class="line">		String str1 =<span class="string">"&lt;11&gt;Hello World!&lt;/11&gt;"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		String str2 =<span class="string">"&lt;11&gt;Hello World!&lt;/22&gt;"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		System.out.println(str1.matches(regexExpress));<span class="comment">//true</span></span><br><span class="line">		System.out.println(str2.matches(regexExpress));<span class="comment">//false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String regexExpress = <span class="string">"hi"</span>;		 <span class="comment">// 正则式。</span></span><br><span class="line">		String str1 =<span class="string">"hi"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		String str2 =<span class="string">"Hi"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		String str3 =<span class="string">"hi world, hi java!"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		<span class="comment">// 判断str是否符合regexExpress的要求。</span></span><br><span class="line">		System.out.println(str1.matches(regexExpress));<span class="comment">//true</span></span><br><span class="line">		System.out.println(str2.matches(regexExpress));<span class="comment">//false</span></span><br><span class="line">		System.out.println(str3.matches(regexExpress));<span class="comment">//false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//sting的matches方法，只有在匹配串完全满足正则式的情况下才会返回true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="正则的预定义字符串"><a href="#正则的预定义字符串" class="headerlink" title="正则的预定义字符串"></a>正则的预定义字符串</h3><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td align="center">任何字符（与行结束符可能匹配也可能不匹配）</td>
+</tr>
+<tr>
+<td>\d</td>
+<td align="center">表示由数字组成。它等价于[0-9]。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td align="center">表示由非数字组成。它等价于[^0-9]。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td align="center">表示由空白组成。空白包括空格，制表符(Tab)，换行符，中文全角空格等。它等价于[ \t\n\x0B\f\r]</td>
+</tr>
+<tr>
+<td>\S</td>
+<td align="center">表示由非空格组成。它等价于[^\s]。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td align="center">表示由字母、数字、下划线组成。它等价于[a-zA-Z_0-9]。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td align="center">表示由非字母、数字、下划线组成。它等价于[^a-zA-Z_0-9]。</td>
+</tr>
+</tbody></table>
+<h3 id="Greedy数量词"><a href="#Greedy数量词" class="headerlink" title="Greedy数量词"></a>Greedy数量词</h3><p>Greedy数量词用来指定其所修饰的正则表达式所要连续出现的次数。</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>？</td>
+<td align="center">表示正则表达式出现0 ~ 1次。</td>
+</tr>
+<tr>
+<td>*</td>
+<td align="center">表示正则表达式出现0 ~ n次。</td>
+</tr>
+<tr>
+<td>+</td>
+<td align="center">表示正则表达式出现1 ~ n次。</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td align="center">表示正则表达式 正好连续出现n次。</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td align="center">表示正则表达式 连续出现“n&lt;=次数” 次。</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td align="center">表示正则表达式 连续出现 “n&lt;= 次数&lt;=m ”次。</td>
+</tr>
+</tbody></table>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[]</td>
+<td align="center">若待匹配字符 是中括号里列出的任意一个字符。 则返回true。</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td align="center">若待匹配字符 不是中括号里列出的任意一个字符。则返回true。</td>
+</tr>
+<tr>
+<td>[a-z0-9A-Z]</td>
+<td align="center">若待匹配字符 是a<del>z、A</del>Z、0~9之间则返回true。(两头的字母包括在内)</td>
+</tr>
+<tr>
+<td>[a-d[m-p]]</td>
+<td align="center">若待匹配字符 是a~d或者m-p之间则返回true。(两头的字母包括在内)即此处将“[m-p]”视为一个子集合。即并集。</td>
+</tr>
+<tr>
+<td>[a-z&amp;&amp;[def]]</td>
+<td align="center">若待匹配字符 是d、e、f则返回true。(两头的字母包括在内)即取集合“a-z”与集合“def”的交集。</td>
+</tr>
+<tr>
+<td>[a-z&amp;&amp;[^bc]]</td>
+<td align="center">若待匹配字符 是a~z之间且不是b、c则返回true。(两头的字母包括在内)</td>
+</tr>
+<tr>
+<td>[a-z&amp;&amp;[^m-p]]</td>
+<td align="center">若待匹配字符 是a<del>l或q</del>z之间则返回true。(两头的字母包括在内)</td>
+</tr>
+</tbody></table>
+<h3 id="字符的转义"><a href="#字符的转义" class="headerlink" title="字符的转义"></a>字符的转义</h3><p>若是想匹配元字符本身的话，比如“.”或者“<em>”。<br>那么就得使用“\”来取消这些字符的特殊意义。因此应该使用“.” 和“\</em>”。当然要查找“\”本身，你也得用“\”。</p>
+<h3 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h3><p>正则表达式支持“或“运算<br>与”[]”类似，或运算也是提供几种规则，如果满足其中任意一种规则都视为匹配成功，，其具体的方法是用“｜”把不同的规则分隔开</p>
+<h3 id="组"><a href="#组" class="headerlink" title="组"></a>组</h3><p>定义：在正则表达式中，组是一个或者多个基本的正则表达式组合在一起，构成一个大的正则表达式</p>
+<p>正则表达式中，组分为捕获组和非捕获组，捕获组又分为普通捕获组和命名捕获组</p>
+<p>捕获组：是用()把组中的正则表达式括起来，捕获组并不会影响正常的匹配功能 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String regexExpress = <span class="string">"&lt;(\\d+)&gt;Hello World!&lt;/\\1&gt;"</span>;	<span class="comment">// 正则式。</span></span><br><span class="line">		String str1 =<span class="string">"&lt;11&gt;Hello World!&lt;/11&gt;"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		String str2 =<span class="string">"&lt;11&gt;Hello World!&lt;/22&gt;"</span>;<span class="comment">// 匹配串。</span></span><br><span class="line">		System.out.println(str1.matches(regexExpress));<span class="comment">//true</span></span><br><span class="line">		System.out.println(str2.matches(regexExpress));<span class="comment">//false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>正则表达式中的每个捕获组会自动拥有一个组号，从左到用，从1开始，我们可以通过 “\组号”的方式引用到捕获组中的内容，这种引用称为：反向引用   </p>
 <p>从上面的代码中可以看出<br>regexExpress 中是用了 ()指定了一个捕获组<br>当捕获组1匹配到了11，也就保存了11，所以通过”/\1”,就可以匹配第二个11</p>
