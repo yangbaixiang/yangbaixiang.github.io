@@ -6,19 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>泛型入门 | Hexo</title>
+  <title>Archives | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="泛型引入  泛型类 通配符 泛型方法 泛型接口 泛型嵌套   泛型代表一个广泛的类型，代表任意的类型，Object类也可以接受任意类型的对象，也可以代表任意的类型  泛型和Object类型的区别 ：泛型代表一个可变的类型 一旦为其指定了一个具体的类型。则泛型就固定了。不能再更改了Object类型代表一个可变的类型 在任何时间、地点都可以接受任何数据类型。 泛型的引出由于程序中的代码量大，代码就会">
-<meta property="og:type" content="article">
-<meta property="og:title" content="泛型入门">
-<meta property="og:url" content="http://yoursite.com/2019/07/07/post泛型入门/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="泛型引入  泛型类 通配符 泛型方法 泛型接口 泛型嵌套   泛型代表一个广泛的类型，代表任意的类型，Object类也可以接受任意类型的对象，也可以代表任意的类型  泛型和Object类型的区别 ：泛型代表一个可变的类型 一旦为其指定了一个具体的类型。则泛型就固定了。不能再更改了Object类型代表一个可变的类型 在任何时间、地点都可以接受任何数据类型。 泛型的引出由于程序中的代码量大，代码就会">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T10:23:58.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型入门">
-<meta name="twitter:description" content="泛型引入  泛型类 通配符 泛型方法 泛型接口 泛型嵌套   泛型代表一个广泛的类型，代表任意的类型，Object类也可以接受任意类型的对象，也可以代表任意的类型  泛型和Object类型的区别 ：泛型代表一个可变的类型 一旦为其指定了一个具体的类型。则泛型就固定了。不能再更改了Object类型代表一个可变的类型 在任何时间、地点都可以接受任何数据类型。 泛型的引出由于程序中的代码量大，代码就会">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -148,192 +144,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-post泛型入门" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      泛型入门
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/07/03/java/" class="archive-article-date">
+  	<time datetime="2019-07-03T02:48:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/07/03/java/">java基础入门</a>
     </h1>
   
 
-        
-        <a href="/2019/07/07/post泛型入门/" class="archive-article-date">
-  	<time datetime="2019-07-07T09:49:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>泛型引入 </li>
-<li>泛型类</li>
-<li>通配符</li>
-<li>泛型方法</li>
-<li>泛型接口</li>
-<li>泛型嵌套 </li>
-</ul>
-<p>泛型代表一个广泛的类型，代表任意的类型，Object类也可以接受任意类型的对象，也可以代表任意的类型 </p>
-<p>泛型和Object类型的区别 ：<br>泛型代表一个可变的类型 一旦为其指定了一个具体的类型。则泛型就固定了。不能再更改了<br>Object类型代表一个可变的类型 在任何时间、地点都可以接受任何数据类型。</p>
-<h2 id="泛型的引出"><a href="#泛型的引出" class="headerlink" title="泛型的引出"></a>泛型的引出</h2><p>由于程序中的代码量大，代码就会很复杂，使人不知道某一对象在此时的具体类型是什么，很容易出现类型转换的错误，因此引出泛型。泛型的优点是不需要向下转型。</p>
-<h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><h3 id="简单泛型"><a href="#简单泛型" class="headerlink" title="简单泛型"></a>简单泛型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//泛型定义的格式 </span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 类名&lt;泛型类型&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T a ; </span><br><span class="line">    <span class="keyword">private</span> T b ;</span><br><span class="line">   <span class="comment">//.....省略set，get</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用上面A类</span></span><br><span class="line"></span><br><span class="line">A a = <span class="keyword">new</span> A&lt;String&gt;() ; </span><br><span class="line">String a1 = a.geta() ;  <span class="comment">//无需向下转型</span></span><br><span class="line">String b1 = a.getb();</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-<p>泛型是在实例化对象的时候才为类中的属性指定具体的数据类型，是在类的外部指定的 </p>
-<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A&lt;Object&gt; p1 = <span class="keyword">new</span> A&lt;Object&gt;();</span><br><span class="line">A&lt;Integer&gt; p2 = <span class="keyword">new</span> A&lt;Integer&gt;(<span class="number">5</span>,<span class="number">2</span>);</span><br><span class="line">p1 = p2;  <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
-
-<p>在Java中可以将一个Integer对象赋值给一个Object对象，但是在泛型中是错误的做法，因为A<integer>是引用数据类型，不是Integer类型，同样A<object>不是Object类型，所以是错误的。</object></integer></p>
-<p>但是如果按下面的做法是可以的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Point&lt;?&gt; p1 = <span class="keyword">new</span> Point&lt;Object&gt;(<span class="number">12</span>,<span class="number">23</span>);</span><br><span class="line">Point&lt;?&gt; p2 = <span class="keyword">new</span> Point&lt;Integer&gt;(<span class="number">5</span>,<span class="number">2</span>);</span><br><span class="line">p1 = p2;</span><br></pre></td></tr></table></figure>
-
-<p>“?”表示可以接受任意的 A<t> 类型的对象，即：A&lt;?&gt; p = 任意A<t>数据类型”<br>“?”便被称为通配符，通配符是有缺陷的，只能引用不能修改 </t></t></p>
-<h2 id="泛型上限"><a href="#泛型上限" class="headerlink" title="泛型上限"></a>泛型上限</h2><p>限制泛型的取值范围，最高不能超过一个指定的类型。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示A类只能表示数字类型的</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T x;</span><br><span class="line">	<span class="keyword">private</span> T y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 泛型下限 </span><br><span class="line">限制泛型的取值范围，最低不能低于的一个指定的类型      </span><br><span class="line">设置泛型下界的方式只有一种：通过修改引用变量的取值，来限制泛型的下限</span><br><span class="line"></span><br><span class="line">``` java </span><br><span class="line">A&lt;? <span class="keyword">super</span> String&gt; p = <span class="keyword">new</span> A&lt;String&gt;();</span><br></pre></td></tr></table></figure>
-
-<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;  <span class="comment">//此类为 非泛型类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">(T a)</span></span>&#123;</span><br><span class="line">		System.out.println(a);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Demo</span>&lt;<span class="title">A</span>&gt; </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">(A a)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实现泛型接口的两种方式：1.定义类的同时为接口指定泛型的类型，2.类本事也是一个泛型 </p>
-<h2 id="泛型嵌套"><a href="#泛型嵌套" class="headerlink" title="泛型嵌套"></a>泛型嵌套</h2>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/07/post泛型入门/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/07/07/post基本排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          基本排序算法
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/06/java-IO/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java IO </div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -357,8 +213,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
