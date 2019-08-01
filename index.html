@@ -142,20 +142,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-消息机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-安卓消息机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/01/消息机制/">消息机制</a>
+      <a class="article-title" href="/2019/08/01/安卓消息机制/">安卓消息机制</a>
     </h1>
   
 
         
-        <a href="/2019/08/01/消息机制/" class="archive-article-date">
-  	<time datetime="2019-08-01T11:08:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
+        <a href="/2019/08/01/安卓消息机制/" class="archive-article-date">
+  	<time datetime="2019-08-01T13:55:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
 </a>
         
       </header>
@@ -172,7 +172,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Looper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;Looper&gt; sThreadLocal = <span class="keyword">new</span> ThreadLocal&lt;Looper&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       prepare(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (sThreadLocal.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Only one Looper may be created per thread"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       sThreadLocal.set(<span class="keyword">new</span> Looper(quitAllowed));</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>3.在调用looper.prepare()方法的时候，perpare()方法会判断此线程中looper对象是否存在，如果存在就抛出异常。<br>4.在判断但是线程是否有looper的时候使用了ThreadLocal这个了类，通过其get(）方法获取 </p>
-<h3 id="ThreadLocal实现Looper线程唯一的原理"><a href="#ThreadLocal实现Looper线程唯一的原理" class="headerlink" title="ThreadLocal实现Looper线程唯一的原理"></a>ThreadLocal实现Looper线程唯一的原理</h3>
+<h3 id="ThreadLocal实现Looper线程唯一的原理"><a href="#ThreadLocal实现Looper线程唯一的原理" class="headerlink" title="ThreadLocal实现Looper线程唯一的原理"></a>ThreadLocal实现Looper线程唯一的原理</h3><p>ThreadLocal：实现了线程本地的存储，<font color="#009900" size="3"> 所以的线程共享一个ThreadLocal对象，但是不同的线程仅仅能访问与其值关联的值，一个线程修改了ThreadLocal对象，其他的线程不受影响</font>    </p>
+<p><img src="/.com//thread_local1.png" alt></p>
+
       
 
       
@@ -184,7 +186,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/01/消息机制/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/01/安卓消息机制/">展开全文 >></a>
         </p>
       
 
