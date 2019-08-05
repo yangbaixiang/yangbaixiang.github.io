@@ -43,7 +43,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/favicon.png" class="js-avatar">
+			<img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5ot7oterqj30b40b4749.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">杨百祥</a></h1>
@@ -95,7 +95,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/favicon.png" class="js-avatar">
+				<img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5ot7oterqj30b40b4749.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">杨百祥</h1>
@@ -141,6 +141,106 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-HashMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/05/HashMap/">Map</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/05/HashMap/" class="archive-article-date">
+  	<time datetime="2019-08-05T06:12:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a>Hash函数</h3><p>定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值</p>
+<h2 id="常见的散列函数算法"><a href="#常见的散列函数算法" class="headerlink" title="常见的散列函数算法"></a>常见的散列函数算法</h2><h3 id="1-直接定址法"><a href="#1-直接定址法" class="headerlink" title="1.直接定址法"></a>1.直接定址法</h3><p>直接取关键字K或者k加上某个常数(K+C)作为hash地址<br>Ｈ(key) = key 或  H(key) = a * key + b<br>其中K，C为常数，这种定址方法所得的地址的集合和关键字的集合大小相等，所以对于不同的关键字所得的地址不会出现冲突的现象，不是实际使用这种方式较少。 </p>
+<h3 id="2-数字分析法"><a href="#2-数字分析法" class="headerlink" title="2.数字分析法"></a>2.数字分析法</h3><p>提取关键字中取之比较平均的数字作为hash地址     </p>
+<p>数字分析法的基本要求<br>1.关键字是以R为基数(如已知关键字都是10进制，或者8进制)<br>2.哈希表中可能出现的关键字是已知的。<br>对所有的关键字进行分析，查找相似度最低的某位或者某几个的数字，然后根据每个关键字上的这几位进行求哈希值</p>
+<h3 id="3-分段叠加法"><a href="#3-分段叠加法" class="headerlink" title="3.分段叠加法"></a>3.分段叠加法</h3><p>按照哈希地址位数将关键字分为位数相等的几个部分（最后一部分的位数可以不同），然后将这几个部分叠加，舍弃最高进位就是该关键字的哈希<br>地址，适用于关键字很多，且关键字中的每一位上的数字分布大致均匀</p>
+<p>例如对0-442-20586-4进行分段叠加取哈希值<br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g5oss9nqmgj30hg0730st.jpg" alt></p>
+<h3 id="4-平方取中法"><a href="#4-平方取中法" class="headerlink" title="4.平方取中法"></a>4.平方取中法</h3><p>取关键字的平方之后的中间几位为哈希地址，一个数平方之后的中间几位和这个数的每一位都有关系，由此使用随机分布的关键字得到的哈希地址也是随机的，取的位数由表长决定</p>
+<h3 id="5-伪随机数"><a href="#5-伪随机数" class="headerlink" title="5.伪随机数"></a>5.伪随机数</h3><p>选择一随机函数，取关键字作为散列地址,关键字的长度不等时，可以采用此方法</p>
+<h3 id="6-除留取余法"><a href="#6-除留取余法" class="headerlink" title="6.除留取余法"></a>6.除留取余法</h3><p>取关键字被某个<font color="#009900" size="3">不大于哈希表表长m</font>的数p除后得到余数为哈希地址<br>H(key)  = key MOD p , p&lt;=m<br>这种方式不仅可以对关键字直接取模，这可以在折叠，平方取中的基础上取模，p的取值需要技巧，如hashMap 取p为数组长度-1的值</p>
+<h2 id="选取哈希函数"><a href="#选取哈希函数" class="headerlink" title="选取哈希函数"></a>选取哈希函数</h2><p>选取哈希函数需要考虑的因素</p>
+<ol>
+<li>计算哈希函数所需要的时间</li>
+<li>关键字的长度</li>
+<li>哈希表的大小</li>
+<li>关键字的分布</li>
+<li>记录查找的频率</li>
+</ol>
+<h2 id="哈希冲突的解决办法"><a href="#哈希冲突的解决办法" class="headerlink" title="哈希冲突的解决办法"></a>哈希冲突的解决办法</h2><h3 id="1-链地址法"><a href="#1-链地址法" class="headerlink" title="1.链地址法"></a>1.链地址法</h3><p> 将哈希表的每个单元作为链表的头节点，所有哈希地址为i（即哈希地址值相同的一类）的元素构成一个同义词链表，即发生冲突就把该关键字链在以该单元为头节点的链表尾部</p>
+<h3 id="2-开放定址法"><a href="#2-开放定址法" class="headerlink" title="2.开放定址法"></a>2.开放定址法</h3><p> 发生冲突时，寻找下一空的哈希地址值，只要哈希表足够大，总能找到空的哈希地址</p>
+<h3 id="3-再哈希法"><a href="#3-再哈希法" class="headerlink" title="3.再哈希法"></a>3.再哈希法</h3><p> 发生冲突时，再由其他的哈希函数重新计算一次哈希值</p>
+<h3 id="4-建立公共益处区"><a href="#4-建立公共益处区" class="headerlink" title="4.建立公共益处区"></a>4.建立公共益处区</h3><p> 将哈希表分为基本表和益处表，发生冲突时将冲突的元素放在益处表</p>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="HashMap图解"><a href="#HashMap图解" class="headerlink" title="HashMap图解"></a>HashMap图解</h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5ot9tap3aj30g00acmyc.jpg" alt></p>
+<h3 id="HashMap的Hash算法"><a href="#HashMap的Hash算法" class="headerlink" title="HashMap的Hash算法"></a>HashMap的Hash算法</h3><p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5otc9qqbpj316k06g3z1.jpg" alt></p>
+<p>对key本身的hashCode值与key的hashCode值位移16为做位异或运算得到新的hash值</p>
+<h3 id="put方法存元素"><a href="#put方法存元素" class="headerlink" title="put方法存元素"></a>put方法存元素</h3><p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g5otgui2ygj30v40meacg.jpg" alt><br>使用上一步得到的key的hash值与数组长度-1做与运算得到key所在数组tab上的索引位置</p>
+<p>1.计算该元素的hash值<br>2.找到hash对应的数组的值<br>3.如果该位置已经有其他的元素，那么就以链表的形式放在链表的尾部</p>
+<h3 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title">getNode</span><span class="params">(<span class="keyword">int</span> hash, Object key)</span> </span>&#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; <span class="keyword">int</span> n; K k;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">           <span class="comment">// 我们需要关注下面这一行</span></span><br><span class="line">           (first = tab[(n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (first.hash == hash &amp;&amp; <span class="comment">// always check first node</span></span><br><span class="line">               ((k = first.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">               <span class="keyword">return</span> first;</span><br><span class="line">           <span class="keyword">if</span> ((e = first.next) != <span class="keyword">null</span>) &#123;</span><br><span class="line">               <span class="keyword">if</span> (first <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                   <span class="keyword">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);</span><br><span class="line">               <span class="keyword">do</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="keyword">return</span> e;</span><br><span class="line">               &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.计算所要寻找的key的hashCode<br>2.找到数组中对应的位置的某一元素<br>3.通过key的equals方法找到链表中对应的元素</p>
+<h3 id="HashMap的寻址算法分析"><a href="#HashMap的寻址算法分析" class="headerlink" title="HashMap的寻址算法分析"></a>HashMap的寻址算法分析</h3><p>key的hash值与数组长度-1做”与”运算得到key所在数组tab上的索引位置</p>
+<p>如图左边两个数组的长度为16(2的4次方)，右边的两个数组的长度为15，分别对这四组数组长度值-1值与8和9做”与”运算(可以理解为分别用15和14 对 8和9做与运算 )     </p>
+<p>根据结果可以得出当8和9对14的二进制值做”与”运算的时候得到了相同的结果1000，也就是说如果在HashMap中8和9会被放到相同的索引下，那么查询的时候就会降低效率。      </p>
+<p>同时根据分析可以得出当数组的长度为15的时候，即hashcode的值会与14(1110)做”与”运算，那么得到的结果最后一位永远是0，像0001，0011，0101，1001，1011，0111，1101这几个位置永远不能存放元素，造成数组空间浪费，同时数组中可使用的位置比数组的长度小了很多，进一步加大的碰撞的概率<br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g5otz649b9j30od086404.jpg" alt></p>
+<p>所以当数组长度为2的n次幂的时候，不同的key得到的index相同的几率较小，数据在数组上分布均匀<br>HashMap数组的默认长度为16也正是因为这个<br>在手动指定HashMap数组长度的时候最好也是用2的n次幂</p>
+<h3 id="HashMap数组的扩容"><a href="#HashMap数组的扩容" class="headerlink" title="HashMap数组的扩容"></a>HashMap数组的扩容</h3><p>HashMap扩容的时间，当HashMap中的元素个数超过数组大小<em>loadFactor时便会自动扩容(loadFactor的默认值为0.75),每次扩容容量扩大一倍<br>扩容时HashMap对数组中所有的元素重新做了一次位置的计算，这个最消耗内存的操作<br>因此在如果能已知HashMap所需要存储元素数量的情况下，最好手动指定数组大小，指定数组的大小</em>0.75最好大于已知元素的数量(在指定数组大小为2的n次幂的前提下)</p>
+<h3 id="保证key的唯一性"><a href="#保证key的唯一性" class="headerlink" title="保证key的唯一性"></a>保证key的唯一性</h3><p>如果通过key得到的新的hashcode值是相同的话那么就取对比key的equals方法，如果不同就加入到同一索引下的链表的尾部，如果依然相同，那么jvm就认为是同一个key，不会做新的添加，value不同时，会覆盖旧的value</p>
+<h2 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h2><p>HashTable和HashMap原理相同，区别在于其是线程安全的 </p>
+<h2 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h2><p>有序的HashMap<br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g5owtua912j30yi0ln40v.jpg" alt></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/05/HashMap/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-安卓消息机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1436,68 +1536,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/03/java基础概括/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-动画" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/03/动画/">动画</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/03/动画/" class="archive-article-date">
-  	<time datetime="2019-07-03T03:04:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/03/动画/">展开全文 >></a>
         </p>
       
 
