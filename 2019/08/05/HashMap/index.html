@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Map | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hash函数定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值 常见的散列函数算法1.直接定址法直接取关键字K或者k加上某个常数(K+C)作为hash地址Ｈ(key) = key 或  H(key) = a * key + b其中K，C为常数，这种定址方法所得的地址的集合和关键字的集合大小相等，所以对于不">
+  <meta name="description" content="常见的散列函数 选取散列函数 散列冲突解决 HashMap HashTable LinkedHashMap  Hash函数定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值 常见的散列函数算法1.直接定址法直接取关键字K或者k加上某个常数(K+C)作为hash地址Ｈ(key) = key 或  H(ke">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Map">
 <meta property="og:url" content="http://yoursite.com/2019/08/05/HashMap/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Hash函数定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值 常见的散列函数算法1.直接定址法直接取关键字K或者k加上某个常数(K+C)作为hash地址Ｈ(key) = key 或  H(key) = a * key + b其中K，C为常数，这种定址方法所得的地址的集合和关键字的集合大小相等，所以对于不">
+<meta property="og:description" content="常见的散列函数 选取散列函数 散列冲突解决 HashMap HashTable LinkedHashMap  Hash函数定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值 常见的散列函数算法1.直接定址法直接取关键字K或者k加上某个常数(K+C)作为hash地址Ｈ(key) = key 或  H(ke">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g5oss9nqmgj30hg0730st.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1g5ot9tap3aj30g00acmyc.jpg">
@@ -21,10 +21,10 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1g5otgui2ygj30v40meacg.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g5otz649b9j30od086404.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g5owtua912j30yi0ln40v.jpg">
-<meta property="og:updated_time" content="2019-08-05T09:03:58.067Z">
+<meta property="og:updated_time" content="2019-08-05T09:08:04.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Map">
-<meta name="twitter:description" content="Hash函数定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值 常见的散列函数算法1.直接定址法直接取关键字K或者k加上某个常数(K+C)作为hash地址Ｈ(key) = key 或  H(key) = a * key + b其中K，C为常数，这种定址方法所得的地址的集合和关键字的集合大小相等，所以对于不">
+<meta name="twitter:description" content="常见的散列函数 选取散列函数 散列冲突解决 HashMap HashTable LinkedHashMap  Hash函数定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值 常见的散列函数算法1.直接定址法直接取关键字K或者k加上某个常数(K+C)作为hash地址Ｈ(key) = key 或  H(ke">
 <meta name="twitter:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g5oss9nqmgj30hg0730st.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -171,7 +171,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a>Hash函数</h3><p>定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值</p>
+        <ul>
+<li>常见的散列函数</li>
+<li>选取散列函数</li>
+<li>散列冲突解决</li>
+<li>HashMap</li>
+<li>HashTable</li>
+<li>LinkedHashMap</li>
+</ul>
+<h3 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a>Hash函数</h3><p>定义：hash函数即散列函数，可以将不定长的输入，通过散列算法得到定长的输出，不同的输入值可能会得到相同的输出值，所以散列函数并不能去的唯一的值</p>
 <h2 id="常见的散列函数算法"><a href="#常见的散列函数算法" class="headerlink" title="常见的散列函数算法"></a>常见的散列函数算法</h2><h3 id="1-直接定址法"><a href="#1-直接定址法" class="headerlink" title="1.直接定址法"></a>1.直接定址法</h3><p>直接取关键字K或者k加上某个常数(K+C)作为hash地址<br>Ｈ(key) = key 或  H(key) = a * key + b<br>其中K，C为常数，这种定址方法所得的地址的集合和关键字的集合大小相等，所以对于不同的关键字所得的地址不会出现冲突的现象，不是实际使用这种方式较少。 </p>
 <h3 id="2-数字分析法"><a href="#2-数字分析法" class="headerlink" title="2.数字分析法"></a>2.数字分析法</h3><p>提取关键字中取之比较平均的数字作为hash地址     </p>
 <p>数字分析法的基本要求<br>1.关键字是以R为基数(如已知关键字都是10进制，或者8进制)<br>2.哈希表中可能出现的关键字是已知的。<br>对所有的关键字进行分析，查找相似度最低的某位或者某几个的数字，然后根据每个关键字上的这几位进行求哈希值</p>
