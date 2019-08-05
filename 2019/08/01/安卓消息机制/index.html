@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Handle中重要的类 Looper如何在线程中保证唯一 ThreadLocal的实现原理 Looper的创建方式  消息的载体Message 消息池MessageQueue 一个线程多个Handle  Handle原理三个重要的类 ：Handle，Looper，MessageQueueHandle：封装了消息的发送，消息的接受，内部与Looper关联Looper：消息封装的载体，内部包含了Me">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/.com//thread_local1.png">
-<meta property="og:updated_time" content="2019-08-03T04:08:43.522Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g5orse8suoj311y0cmdh0.jpg">
+<meta property="og:updated_time" content="2019-08-05T06:10:00.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓消息机制">
 <meta name="twitter:description" content="Handle中重要的类 Looper如何在线程中保证唯一 ThreadLocal的实现原理 Looper的创建方式  消息的载体Message 消息池MessageQueue 一个线程多个Handle  Handle原理三个重要的类 ：Handle，Looper，MessageQueueHandle：封装了消息的发送，消息的接受，内部与Looper关联Looper：消息封装的载体，内部包含了Me">
-<meta name="twitter:image" content="http://yoursite.com/.com//thread_local1.png">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g5orse8suoj311y0cmdh0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -186,7 +186,7 @@
 
 <p>3.在调用looper.prepare()方法的时候，perpare()方法会判断此线程中looper对象是否存在，如果存在就抛出异常。<br>4.在判断但是线程是否有looper的时候使用了ThreadLocal这个了类，通过其get(）方法获取 </p>
 <h3 id="ThreadLocal实现Looper线程唯一的原理"><a href="#ThreadLocal实现Looper线程唯一的原理" class="headerlink" title="ThreadLocal实现Looper线程唯一的原理"></a>ThreadLocal实现Looper线程唯一的原理</h3><p>ThreadLocal：实现了线程本地的存储，<font color="#009900" size="3"> 所以的线程共享一个ThreadLocal对象，但是不同的线程仅仅能访问与其值关联的值，一个线程修改了ThreadLocal对象，其他的线程不受影响</font>    </p>
-<p><img src="/.com//thread_local1.png" alt></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5orse8suoj311y0cmdh0.jpg" alt></p>
 <p>ThreadLocal可以理解为一块存储区，将一块大的存储区分割成若干个小的存储区，每一个线程都拥有一块属于自己的存储区，那么每个线程操作自己的存储区就不会影响其他的线程，在消息机制中，每一个小的存储区就保证了每个线程和当前线程的Looper想关联     </p>
 <h4 id="ThreadLocal的实现原理"><a href="#ThreadLocal的实现原理" class="headerlink" title="ThreadLocal的实现原理"></a>ThreadLocal的实现原理</h4><p>Thread的成员变量localValues代表了线程特定的变量，类型为ThreadLocal.Values，由于线程特定的变量可能会有多个，并且类型不确定，所以ThreadLocal.Values有一个table成员变量，类型为Object数组，LocalValues可以理解为二维存储区中与特定的线程相关的一员。<br>ThreadLocal类相当于一个代理，真正操作线程特定存储区的是其内部类Values</p>
 <p>set方法 </p>
