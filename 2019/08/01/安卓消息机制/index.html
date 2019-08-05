@@ -6,23 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>安卓消息机制 | Hexo</title>
+  <title>安卓消息机制 | 晴天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Handle中重要的类 Looper如何在线程中保证唯一 ThreadLocal的实现原理 Looper的创建方式  消息的载体Message 消息池MessageQueue 一个线程多个Handle  Handle原理三个重要的类 ：Handle，Looper，MessageQueueHandle：封装了消息的发送，消息的接受，内部与Looper关联Looper：消息封装的载体，内部包含了Me">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓消息机制">
 <meta property="og:url" content="http://yoursite.com/2019/08/01/安卓消息机制/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="晴天">
 <meta property="og:description" content="Handle中重要的类 Looper如何在线程中保证唯一 ThreadLocal的实现原理 Looper的创建方式  消息的载体Message 消息池MessageQueue 一个线程多个Handle  Handle原理三个重要的类 ：Handle，Looper，MessageQueueHandle：封装了消息的发送，消息的接受，内部与Looper关联Looper：消息封装的载体，内部包含了Me">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g5orse8suoj311y0cmdh0.jpg">
-<meta property="og:updated_time" content="2019-08-05T06:10:00.159Z">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g5oyyleadqj30u01lw123.jpg">
+<meta property="og:updated_time" content="2019-08-05T10:17:41.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓消息机制">
 <meta name="twitter:description" content="Handle中重要的类 Looper如何在线程中保证唯一 ThreadLocal的实现原理 Looper的创建方式  消息的载体Message 消息池MessageQueue 一个线程多个Handle  Handle原理三个重要的类 ：Handle，Looper，MessageQueueHandle：封装了消息的发送，消息的接受，内部与Looper关联Looper：消息封装的载体，内部包含了Me">
 <meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g5orse8suoj311y0cmdh0.jpg">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="晴天" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -289,6 +290,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Handle system messages here.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispatchMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (msg.callback != <span class="keyword">null</span>) &#123;</span><br><span class="line">        handleCallback(msg);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (mCallback != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mCallback.handleMessage(msg)) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        handleMessage(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>最终才走到了hanleMessage(msg)方法，我们值需要重写这个方法就能拿到对应的Handle发送的消息</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g5oyyleadqj30u01lw123.jpg" alt></p>
 
       
 
