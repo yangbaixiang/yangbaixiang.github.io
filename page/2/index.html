@@ -142,6 +142,287 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="port-面向对象基础" class="article article-type-port  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/03/面向对象基础/">面向对象基础</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/03/面向对象基础/" class="archive-article-date">
+  	<time datetime="2019-07-03T07:50:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>面向对象和面向过程</li>
+<li>类</li>
+<li>对象实例化与类加载</li>
+<li>类的继承</li>
+<li>方法重写与属性隐藏</li>
+<li>关键字final</li>
+<li>抽象类</li>
+<li>接口</li>
+<li>内部类</li>
+<li>异常处理</li>
+</ul>
+<h3 id="面向对象和过程"><a href="#面向对象和过程" class="headerlink" title="面向对象和过程"></a>面向对象和过程</h3><ol>
+<li>面向过程设计中 专注于解决问题 导致设计不合理 代码的间联系紧密  因此不利于代码维护(代码修改)。</li>
+<li>面向过程设计中 各部分间类似于“量身定做” 致使别人无法使用 因此不利于代码重用。</li>
+<li>与面向过程相反。 在面向对象设计中 代码易维护、可重用。</li>
+<li>面向过程编程 还有一个特点：代码自顶向下 一步一步 顺序执行。(即 这一步做完后才进行下一步操作)。</li>
+<li>面向过程是面向对象的基础。 不管你怎么分析问题 一切的分析都结束后 仍然需要按照面向过程的编程思路 “自顶向下 一步一步 顺序执行”进行具体的编码。</li>
+<li>在大的方向上使用面向对象分析 在具体的实施阶段上 使用面向过程编程。</li>
+</ol>
+<h3 id="面向对象的三大特征"><a href="#面向对象的三大特征" class="headerlink" title="面向对象的三大特征"></a>面向对象的三大特征</h3><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p> 定义：所谓的封装性 就是指 使类中重要的东西对外部不可见。</p>
+<ul>
+<li>作用：保护类中的属性不被外部直接访问。</li>
+<li>意义：</li>
+<li>封装性的第一个优点 ：保护数据安全。</li>
+<li>封装的第二个优点 ：封装复杂度 </li>
+</ul>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>子类继承父类的属性和方法 </p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>静态的多态  方法重载<br>动态的多态  方法重写</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类：就是对一群事或物 共有特征和行为的抽象。它是抽象的、不是客观存在的。它是一个模板、一张图纸<br>人类<br>特征： 姓名、年龄、性别<br>行为： 说话、吃饭、学习、工作 </p>
+<p>鸟类<br>特征： 羽毛、翅膀<br>行为： 飞翔、下蛋</p>
+<p>对象：就是类的一个个体 一个具体的实例。它是具体的、客观存在的。它是类的一个样品、一个实物。    </p>
+<p>张三<br>    属性：张三、30岁、男<br>    行为：说话、吃饭、学习、工作        </p>
+<p>麻雀<br> 特征：灰色的羽毛、短小的翅膀<br> 行为：飞翔、下蛋</p>
+<h3 id="类的基本组成"><a href="#类的基本组成" class="headerlink" title="类的基本组成"></a>类的基本组成</h3><p>类的属性又称为：字段和成员变量。</p>
+<p>成员变量按 修饰符类型 分为：<br>实例变量  不用static修饰的变量 隶属于对象。<br>静态变量  使用static修饰的变量 隶属于类。</p>
+<p>成员变量按 数据类型 分为：<br>基本类型变量 各自拥有各自的默认值。<br>复合类型变量 默认值统一为null</p>
+<h3 id="访问权限限制"><a href="#访问权限限制" class="headerlink" title="访问权限限制"></a>访问权限限制</h3><p>访问修饰符 ： 就是起到限制别人访问本类中变量和方法的功能的修饰符。</p>
+<ol>
+<li>public    公开访问修饰符 权限最大 在任何地方都可以访问。</li>
+<li>protected 保护访问修饰符 权限第二 同一个包中的类和不同包的子类可访问。</li>
+<li>default   包访问修饰符 权限第三 同一个包中的类可访问。不给变量写访问修饰符 则就默认为包访问。如果使用default修饰变量 反而错了。 default只存在于switch、annotation等语句中。</li>
+<li>private  私有访问修饰符 权限最低 只有本类内部的代码才可以访问。</li>
+</ol>
+<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><ol>
+<li>方法重载时 方法的名称必须相同。</li>
+<li>方法重载时 方法的参数列表必须不相同。包括参数的个数、类型、顺序。也就是说两个同名的方法在这三项中至少要有一项互不相同。</li>
+<li>方法重载时 方法的返回值类型可以不相同。即方法重载只检查方法名称和参数列表。</li>
+</ol>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ol>
+<li>方法名必须和类名相同。</li>
+<li>构造方法没有返回值 也不是void。</li>
+<li>不能在构造方法中使用return返回一个内容。</li>
+<li>构造方法在实例化对象的时候( new的时候)被自动调用。</li>
+<li>Java会为每一个类提供一个默认的(无参)构造方法。</li>
+<li>如果一个类显式的定义了一个有参的构造方法 则Java不会在为其提供无参的构造方法。</li>
+<li>构造方法可以重载。 </li>
+</ol>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>static 变量        </p>
+<ul>
+<li>static定义的变量被称为类变量或静态变量。</li>
+<li>整个类中所有的对象 共用这个变量。 </li>
+<li>对象a改变这个变量的值 对象b再引用此变量的时候 引用的值 是已经改变之后的了。</li>
+<li>类名.变量名(推荐使用此方式)  或者  对象名.变量名。</li>
+<li>static修饰的变量 存在于 全局数据区。static不能修饰局部变量。    </li>
+</ul>
+<p>static 方法          </p>
+<ul>
+<li>static定义的方法被称为类方法或静态方法。</li>
+<li>调用方式：  类名.方法名(推荐使用此方式)  或者  对象名.方法名。</li>
+<li>static修饰的方法内部 只能访问静态成员(静态方法、变量) 不能访问实例成员。</li>
+<li>static 方法中不能使用this、super关键字。</li>
+<li>static方法可以被继承 但是不可以被重写，若子类存在一个和父类完全相同的一个方法，则父类的方法会被隐藏。 </li>
+</ul>
+<p>static 内部类        </p>
+<ul>
+<li>static修饰的内部类被称为 静态内部类。</li>
+</ul>
+<p>Static 修饰的成员 是隶属于类的。<br>即使程序中没有该类的对象存在 也可以通过类名引用该类静态变量和静态方法。<br>因此 static方法内不能引用实例成员。 因为 当前程序中可能还没有该类的对象存在。</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><h3 id="操作系统中内存的划分"><a href="#操作系统中内存的划分" class="headerlink" title="操作系统中内存的划分"></a>操作系统中内存的划分</h3><ol>
+<li>静态数据区：存放程序中的静态数据，如static变量、常量等。变量的内存地址在程序编译的时候就已经分配好，这块内存在程序的整个运行期间都存在。</li>
+<li>代码区：存放程序中源代码。如函数、语句等。</li>
+<li>栈：存放简单变量、对象的引用变量。当程序流程走出局部变量所在的代码块后，局部变量会被从栈中弹出。其所占内存会被操作系统自动回收。</li>
+<li>堆：存放程序动态申请的数据。如Java中的对象(的实例属性)和C语言使用malloc()函数申请的空间都保存在堆中。 保存在堆中的数据，由于是用户自己动态申请的空间，所以当堆中的数据不再需要被使用时，则应该由用户手工释放该数</li>
+</ol>
+<h3 id="堆和栈"><a href="#堆和栈" class="headerlink" title="堆和栈"></a>堆和栈</h3><p>在操作系统中，栈和堆的容量都是有限的。</p>
+<ul>
+<li>栈是内存中的一片连续的存储空间，类似于数组，每当需要为函数中局部变量开辟空间时，都会从栈中申请。</li>
+<li>若栈中的内存足够，则系统将为程序提供内存，否则将报异常并提示栈溢出。</li>
+<li>当函数执行完毕后，会按照后进先出的原则，将局部变量依次弹栈，并将释放出的资源加入到栈中的空闲内存中。</li>
+<li>堆是由内存中的多个分散的存储空间组成的一个不连续的存储空间，各个存储空间基于数据结构中的链表，而组织在一起。 </li>
+<li>当系统收到程序的空间申请时,会遍历该链表,寻找第一个空间大于所申请空间的堆结点,然后将该结点从空闲结点链表中删除,并将该结点的空间分配给程序。</li>
+</ul>
+<h3 id="堆和栈的优缺点"><a href="#堆和栈的优缺点" class="headerlink" title="堆和栈的优缺点"></a>堆和栈的优缺点</h3><p>栈: 由系统自动给变量分配空间，虽然分配空间的速度较快，但是容量固定。<br>堆：空间的大小由用户自定义，分配空间的速度一般比较慢，而且频繁的申请、释放空间容易产生内存碎片,不过用起来最方便。</p>
+<h3 id="内存-1"><a href="#内存-1" class="headerlink" title="内存"></a>内存</h3><p>内存溢出：通俗的说，就是当前操作系统中的剩余内存容量不足。<br>内存泄漏：通俗的说，堆中存在很多已经无用的空间，这些空间在被使用过后，没有被程序员释放，导致系统中明明存在可用的内存空间，却偏偏不能使用。<br>栈溢出：栈中剩余空闲空间不足以满足应用程序所需要的空间</p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>普通代码块 ： 在方法内部出现的代码块。<br>构造块  ：   在方法外 类内出现的代码块。 用于实例化成员变量。每产生一个对象 就会调用一次。<br>静态块  ：   在方法外 类内出现的 使用static修饰的代码块。用来初始化静态成员变量。 只会在类加载的时候调用一次。<br>同步代码块 ：多线程中使用的代码块。后述</p>
+<h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><p>定义：所谓的类加载 就是JVM将类加载到内存中。加载完毕后就可以在内存中建立这个类的对象。</p>
+<p>Java中 类加载发生在如下三种情况：</p>
+<ol>
+<li>创建一个类的对象。</li>
+<li>调用一个类的静态变量。</li>
+<li>调用一个类的静态方法。</li>
+</ol>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><p>Java中使用extends关键字来实现继承。<br>子类可以继承父类中的非private属性和方法。<br>在Java中不允许多继承。 一个子类只能有一个直接父类。通俗的说 就是一个人只能有一个亲爸。C++ 中允许有多继承。<br>在Java中可以使用多层继承。 一个子类可以有多个间接父类。通俗的说 一个人可以有 老爸、爷爷、祖宗。。。。。</p>
+<h2 id="方法重写与属性隐藏"><a href="#方法重写与属性隐藏" class="headerlink" title="方法重写与属性隐藏"></a>方法重写与属性隐藏</h2><h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><p>定义 ： 在子类中定义一个与父类方法中同名的方法 </p>
+<p>方法重写的要求 </p>
+<ol>
+<li><p>子类中重写的方法的访问权限不能小于父类中方法的访问权限。可以增大访问权限。</p>
+<ul>
+<li>子类方法的返回值，必须和父类方法的返回值相同。 如果父类返回double型 则子类也必须是double。</li>
+<li>或者子类方法返回值的类型是父类方法返回值类型的子类。</li>
+<li>子类中的方法必须和父类中的方法同名。</li>
+<li>子类方法的参数列表必须和父类方法的完全相同</li>
+</ul>
+</li>
+<li><p>参数。列表的内容包括：参数的个数、顺序、类型。</p>
+</li>
+<li><p>如果父类方法抛出了异常</p>
+</li>
+</ol>
+<ul>
+<li>子类方法可以不抛异常。</li>
+<li>子类方法可以抛出父类方法抛出的异常。</li>
+<li>子类方法不可以抛出父类方法没有抛出的异常。</li>
+<li>子类方法抛出的异常可以是父类方法抛出的异常的子类。 如果父类方法抛出的异常是Exception 则子类方法可以抛出任意类型的异常。</li>
+</ul>
+<ol start="4">
+<li>父类中的private、final修饰的方法不会被重写。</li>
+</ol>
+<ul>
+<li>子类无法继承父类中的使用private。如果你重写成功了，那只不过是重新定义。</li>
+<li>final修饰的方法 被称为最终方法 不能被重写。即“可以被继承 但不能重写”。</li>
+<li>Static修饰的方法可以被重写、继承</li>
+</ul>
+<h3 id="属性隐藏"><a href="#属性隐藏" class="headerlink" title="属性隐藏"></a>属性隐藏</h3><p>定义  ： 属性隐藏是指在子类中定义了一个与父类同名的属性<br>由于在子类中定义了一个与父类中同名的实例变量。 因此 父类中的变量被隐藏起来了。 不再起作用。</p>
+<ol>
+<li>private属性同样不可以被继承。</li>
+<li>如果希望调用父类中被隐藏的属性 可以在子类中使用super关键字。</li>
+<li>子类中的属性可以和父类中的属性的类型不相同 。只要变量名相同 就可以达到属性隐藏的效果。</li>
+<li>实际开发中 属性都是private的 因此 关于属性的隐藏了解即可</li>
+</ol>
+<h3 id="方法重载和方法重写"><a href="#方法重载和方法重写" class="headerlink" title="方法重载和方法重写"></a>方法重载和方法重写</h3><p>方法重载（OverLoad）</p>
+<ul>
+<li>方法名称相同</li>
+<li>参数的个数、顺序、类型不同</li>
+<li>方法的返回值可以不同 </li>
+<li>在同一个类中发生</li>
+</ul>
+<p> 方法重写（Override）</p>
+<ol>
+<li>方法的名称、参数必须完全相同</li>
+<li>访问权限不能缩小</li>
+<li>不能抛父类未抛异常。</li>
+<li>在继承关系中发生</li>
+</ol>
+<h3 id="关键字final"><a href="#关键字final" class="headerlink" title="关键字final"></a>关键字final</h3><p>修饰类 ：此类不可以被继承。<br>修饰方法 ： 此方法可以被继承但不可以被重写。<br>修饰变量 ： 此变量被成为常量。 只能赋值一次。 赋值后 其值不可以改变。<br>和static组合使用 修饰变量 ：被成为全局常量或类常量。 可以使用类名调用</p>
+<p>局部常量： 使用之前 必须赋值 赋值后其值不可再更改。<br>实例常量： 可以在定义的同时赋值 也可以通过构造方法赋值。但是，实例常量不会有默认值，因此使用之前 必须手工赋值。<br>类常量： 只能且必须在 定义的同时 或者 静态块 中赋值</p>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><ol>
+<li>使用abstract class关键字定义抽象类。</li>
+<li>抽象类是不可以实例化对象的。</li>
+<li>抽象类中可以有抽象方法 也可以没有抽象方法。</li>
+<li>如果一个类中定义了抽象方法 那么这个类必须是抽象类 即使用abstract定义。</li>
+<li>如果一个类继承了抽象类 则必须重写完抽象类中所有抽象方法。否则它也必须使用abstract修饰。</li>
+<li>被final修饰的类 不能有子类。 而abstract类必须被继承。因此二者不能同时修饰类。</li>
+<li>抽象类中可以存在构造方法。虽然不能直接建立抽象类的对象。但是抽象类的构造方</li>
+</ol>
+<h3 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h3><ol>
+<li>使用abstract关键字定义的方法成为抽象方法。</li>
+<li>抽象方法没有方法体。 即没有“{}”。</li>
+<li>抽象方法只有在被重写后才可以使用。</li>
+<li>抽象方法是不完整的方法。 它没有方法体。 因此不能实例化抽象类的对象。因为抽象类中的方法可能没有方法体。 那么如果此时抽象类的对象要是调用这个方法。 程序就没法执行了。</li>
+<li>抽象方法不可以使用private修饰。</li>
+</ol>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>定义：接口是一个特殊的类。其内定义的所有属性都是静态常量，所有方法都是抽象方法， 代表者一种统一的规范 、一种统一的标准</p>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>定义：所谓的内部类 就是指 在一个类的内部定义一个类。<br>· 分类： </p>
+<ol>
+<li>局部内部类</li>
+<li>实例内部类</li>
+<li>静态内部类</li>
+<li>匿名内部类</li>
+</ol>
+<p>特点：     </p>
+<ol>
+<li>普通的外部类只用public和default访问权限。内部类还增有protected、private。</li>
+<li>private内部类只有其外部类可以访问。</li>
+<li>protected内部类只有其同一个包中的类和不同包中的其外部类的子类可以访问。</li>
+<li>内部类的全名： 外部类名.内部类名。</li>
+<li>外部类和内部类之间可以互相访问对方的private变量。</li>
+<li>内部类生成的.class文件 命名为：外部类名$内部类名.class</li>
+</ol>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>定义：异常处理机制是指当程序出现错误后，程序如何处理。具体来说，异常机制提供了程序退出的安全通道。当出现错误后，程序执行的流程发生改变，程序的控制权转移到异常处理器</p>
+<h3 id="异常类的结构"><a href="#异常类的结构" class="headerlink" title="异常类的结构"></a>异常类的结构</h3><p>Object 类派生出Throwable类,Throwable类是Java中最大的处理异常的类。其又有2个子类</p>
+<p>1.Error类<br>Error一般表示由程序运行异常或其他原因导致的一个JVM错误。它们通常是一个致命的错误，不是一般程序能控制的。因此 在程序中 一般也无法解决此类问题。例如： 使用java命令执行一个不存在的类就会抛出一个：” Exception in thread “main” java.lang.NoClassDefFoundError”</p>
+<p>2.Exception类一般是指程序中可以进行处理的错误 如：除数为0、数组下表越界等。其本身又分为两类     </p>
+<ol>
+<li>RuntimeException 异常：此类表示运行时的异常。即在程序运行的时候，由于某些变量的值非法等导致的错误。若出现RuntimeException，那么一定是程序员的错误</li>
+<li>其他非RuntimeException异常，如IOException 。这类异常一般是外部错误，并不是程序本身的错误，而是在应用环境中出现的外部错误    </li>
+</ol>
+<h3 id="异常处理的方式"><a href="#异常处理的方式" class="headerlink" title="异常处理的方式"></a>异常处理的方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;    </span><br><span class="line">  可能出现异常的语句    </span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类 引用变量)&#123;</span><br><span class="line">   在此处进行异常处理</span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类 引用变量)&#123;</span><br><span class="line">    在此处进行异常处理</span><br><span class="line">&#125;...</span><br><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">	异常的出口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用try…catch块来捕获异常。<br>try…catch块之间的语句代表是可能产生异常的语句。<br>一个语句可能会产生多种异常(但是在某一瞬间上 只会产生一种异常) 。此时可以使用多个catch语句。<br>finally块中的语句不论程序中是否抛出异常 都会去执行</p>
+<p>异常匹配的原则 </p>
+<ol>
+<li>catch块中的引用变量与产生的异常对象属于同一个类。<br>  |-  如抛出了ArithmeticException异常 而某一个catch块后恰巧有这个类的引用变量。</li>
+<li>catch块中的引用变量的类型是异常对象的父类。<br>  |-  如抛出了ArithmeticException异常 而某一个catch块后有一个Exception类型的引用变量。Exception就是ArithmeticException异常的父类。      </li>
+<li>catch块中的变量是一个接口类型的引用变量时 产生的异常对象实现了此接口。    </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = i / j ;</span><br><span class="line">		System.out.println(temp);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在方法头部写上throws关键字 代表这个方法可能抛出异常。    </li>
+<li>throws关键字后面列出的是本方法可能抛出异常列表。如果本方法可能抛出多个异常则多个异常之间使用逗号间隔。     </li>
+<li>由于使用了throws关键字 就代表此方法可能抛Exception类型的异常。因此在方法的调用处必须对这些异常进行处理。 在main方法中也可以使用throws关键字 此时会将异常抛给JVM处理。    </li>
+<li>当异常产生时 程序会立刻终止当前行代码的执行 然后跳到catch块中匹配。当异常处理完成后 程序不会回到异常产生的位置继续执行 而是从异常处理语句之后的第一条语句开始执行</li>
+</ol>
+<p>注意 ：<br>程序中RuntimeException类和其子类抛出的异常称为运行异常。<br>在方法定义的异常清单(即 throws 后面的列表)中没必要列出运行异常。<br>try…catch块可以嵌套 使用。 如果在一个内部try中产生了异常 且在其子catch中并无匹配项 则会跳出内层前往外层catch中进行匹配 如果仍未匹配成功 则异常将抛给JVM    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name,<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(name == <span class="keyword">null</span> || (age&lt;<span class="number">0</span> || age &gt; <span class="number">150</span>))</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"参数非法"</span>);</span><br><span class="line">		<span class="keyword">this</span>.name = name ;</span><br><span class="line">		<span class="keyword">this</span>.age = age ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码 ：使用throw关键字手动抛出异常，由于IllegalArgumentException是一个运行异常 因此不需要在构造方法头部使用throws关键字，而方法头部没有throws关键字 那么在方法的调用处也就不需要使用try…catch语句了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/03/面向对象基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-java基础概括" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
