@@ -142,6 +142,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-类库基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/04/类库基础/">类库基础</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/04/类库基础/" class="archive-article-date">
+  	<time datetime="2019-07-04T10:00:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>基础类 </li>
+<li>系统类 </li>
+<li>工具类</li>
+</ul>
+<h2 id="基础类"><a href="#基础类" class="headerlink" title="基础类"></a>基础类</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>在Java中String类用来表示一个字符串，它是final的不可被继承。同时Java中所有的字符串文字[即字符串常量]都是一个String的对象</p>
+<p>创建String对象的两种方式：<br>String str = “Hello World”;  直接赋值字符串常量。<br>String str = new String(“Hello World”);  通过使用new关键字调用构造方法来实例化字符串对象。</p>
+<p>两种创建方式的区别 ：<br>第一种方法在内存中建立了一个String对象，即字符串常量”Hello  World”。<br>第二种方法在内存中建立了两个String对象，一个是字符串常量”Hello World” ，之所以说建立2个String是因为 参数“Hello World”本身就是一个String 然后又new String了一个。</p>
+<p>常量池(constant pool) 指的是在编译期被确定，并被保存在以编译的.class文件中的一些数据组成的集合。它包括了关于类、方法、接口等中的常量，也包括字符串常量。<br>常量池中的字符串常量是唯一的，在池中不会同时存在两个相同的字符串常量。<br>使用第一种方法创建String对象时，JVM会从常量池中查找出常量”Hello World” 的引用然后赋值给变量str。<br>使用第二种方法创建String对象是很浪费空间 因此 很少用那种方法</p>
+<p>一个特殊的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	    String a = <span class="string">"A"</span>;</span><br><span class="line">	    String b = <span class="string">"C"</span>;</span><br><span class="line">	    String c = <span class="string">"AC"</span>;</span><br><span class="line">	    a = a+b;</span><br><span class="line">	    System.out.println(a == c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时的输出结果为false<br>原因 ： 表达式“a+b”的结果是产生一个新的字符串对象”AC”，而变量a和b的指向并没有改变。但是随后又执行了“a = a+b”将新串”AC”的引用赋值给a了。 此时改变的仅仅是a的指向，而不是原来的字符串”A”被改变了，它是常量，不可变，新串”AC”是在程序运行的时候产生的，它存在于堆中，因此他和常量”AC”不是一个</p>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p>在JavaSDK中所有的类都是从Object类派生出来的。<br>如果一个类没有明确的继承一个类 则它默认继承Object类。此为直接继承Object。<br>如果一个类有父类 则它的父类 或 父类的父类….中 总有一个类是直接继承Object。此为间接继承。</p>
+<h2 id="系统类"><a href="#系统类" class="headerlink" title="系统类"></a>系统类</h2><h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p>Java程序是以进程的形式运行在操作系统中的，Runtime类代表当前JVM的运行时环境。Runtime类是Singleton的由JVM来实例化。<br>使用Runtime类可以获取当前进程中JVM的内存状态、操作子进程等     </p>
+<p>Java会周期性的运行垃圾回收器来回收垃圾对象(外界没有持有该对象引用或仅持有弱(虚)引用)，以便释放内存空间。但是若想先于收集器的下一次指定周期来收集废弃的对象，可以通过调用Runtime类的gc()方法来手动运行GC(garbage collector)</p>
+<h3 id="System"><a href="#System" class="headerlink" title="System"></a>System</h3><p>System类是一个系统类。其内的方法和变量都是静态的。其构造方法被隐藏。<br>在 System 类提供的设施中，有标准输入、标准输出和错误输出流；对外部定义的属性和环境变量的访问；加载文件和库的方法；还有快速复制数组的一部分的实用方法</p>
+<h2 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h2><h3 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><p>Arrays是一个数组工具类，其内包含用来操作数组（比如排序和搜索）的各种方法。</p>
+<h3 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h3><p>如果一个自定义类想使用Arrays类的sort方法进行排序 需要实现Comparable接口。</p>
+<h3 id="Math与Random"><a href="#Math与Random" class="headerlink" title="Math与Random"></a>Math与Random</h3><p>Math类在java.lang包中，主要用来执行一些数学运算，如求绝对值、正弦、余弦等。其内的所有方法和字段都是静态的。因此可以使用import static来导入。使用的时候不用再加类名.方法名或类名.变量名。</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>篇幅较多 点击跳转 </p>
+<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p>Date表示特定的瞬间，精确到毫秒<br>Calendar是表示一个日历，它是对Date类的一个封装<br>SimpleDateFormat是一个与语言环境有关的方式来格式化和解析日期的具体类</p>
+<h3 id="Robot"><a href="#Robot" class="headerlink" title="Robot"></a>Robot</h3><p>Robot是用于测试自动化，自运行演示过程和其他需要控制鼠标的应用程序生成本机系统输入事件</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/04/类库基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="port-面向对象基础" class="article article-type-port  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

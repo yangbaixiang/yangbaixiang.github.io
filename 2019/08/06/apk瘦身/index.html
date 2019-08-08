@@ -17,7 +17,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g5pt6w4a2zj31n40oqdsj.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1g5qdzpv2zqj321p0u0qcl.jpg">
-<meta property="og:updated_time" content="2019-08-06T16:05:36.317Z">
+<meta property="og:updated_time" content="2019-08-06T16:36:18.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apk瘦身">
 <meta name="twitter:description" content="分析apk包结构的组成打开方式：Android Studio下 ——&amp;gt; Build——&amp;gt; Analyze app  apk包结构分析   lib/：包含特定的处理器软件层的编译代码，该目录包含了每个平台的子目录。如：armeabi，armeabi-v7a，am64-v8a，x86，x86_64，mips。大多数的情况下可以只使用armeabi-v7a assets/：包含了应用可以使用">
@@ -187,7 +187,12 @@
 
 <p>修改的依据 ： 根据分析 armeabi-v7a主要不兼容ARMv5和ARMv6，目前两种处理器的手机市场占有率很少<br>许多x86设备的手机也可以运行armeabi-v7<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g5qdzpv2zqj321p0u0qcl.jpg" alt></p>
 <h3 id="优化res，asstes目录下的文件"><a href="#优化res，asstes目录下的文件" class="headerlink" title="优化res，asstes目录下的文件"></a>优化res，asstes目录下的文件</h3><p>1.手动的lint检测，手动的删除无用的资源<br>在as中打开”Analyze”选择“Inspect code”手动检索整个项目，删除无用资源（检索之后找到Android Lint 然后找到其下面的Unused resources文件夹）</p>
+<p>2.使用tinypng对图片进行压缩</p>
+<p>3.使用webp格式的图片</p>
+<p>4.在Gradle开启shrinkResources，移无用的资源文件 </p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">buildTypes &#123;</span><br><span class="line">       release &#123;</span><br><span class="line">           <span class="comment">// 不显示Log</span></span><br><span class="line">           buildConfigField <span class="string">"boolean"</span>, <span class="string">"LOG_DEBUG"</span>, <span class="string">"false"</span></span><br><span class="line">           <span class="comment">//混淆</span></span><br><span class="line">           minifyEnabled <span class="keyword">true</span></span><br><span class="line">           <span class="comment">// 移除无用的resource文件</span></span><br><span class="line">           shrinkResources <span class="keyword">true</span></span><br><span class="line">           proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">           signingConfig signingConfigs.release</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="优化classes-dex文件"><a href="#优化classes-dex文件" class="headerlink" title="优化classes.dex文件"></a>优化classes.dex文件</h3>
       
 
       
@@ -279,6 +284,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/07/常见的加密方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常见的加密方式
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/05/三种安卓常用的设计模式/" id="article-nav-older" class="article-nav-link-wrap">

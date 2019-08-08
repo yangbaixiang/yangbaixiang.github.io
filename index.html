@@ -142,6 +142,121 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-常见的加密方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/常见的加密方式/">常见的加密方式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/07/常见的加密方式/" class="archive-article-date">
+  	<time datetime="2019-08-06T16:40:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="加密的基本概念"><a href="#加密的基本概念" class="headerlink" title="加密的基本概念"></a>加密的基本概念</h3><p>密码学的三大作用 ：<br>1.加密：防止别人获取你的数据<br>2.签权：防止别人冒充你的身份<br>明文，秘文，密钥，对称加密，非对称加密<br>3.认证：防止别人修改你的数据 </p>
+<h3 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h3><p>MD5本质是一种散列函数，用于提供消息完整性的保护      </p>
+<p>特点：</p>
+<ol>
+<li>压缩性：任意长度的数据，算出的MD5值的长度都是固定的 </li>
+<li>容易计算：把原始数据计算称为MD5是很容易的 </li>
+<li>抗修改性：对原始数据任何细微的改动，都会造成得到的MD5值发生很大的变动</li>
+<li>抗碰撞性：已知一个MD5值和原始的数据，想要寻找一个相同MD5值的原始数据是几乎不可能的 </li>
+<li>不可逆：MD5理论上不可逆</li>
+</ol>
+<p>使用场景：<br>1.验证密码：只要MD5算法不变，就能和服务器匹配<br>2.文件的完整性校验：下载文件时，做文件的完整性额对比 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//MD5加密</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MD5Utils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加密字符串</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMD5Code</span><span class="params">(String info)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            MessageDigest md5=MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">            md5.update(info.getBytes(<span class="string">"utf-8"</span>));</span><br><span class="line">            <span class="keyword">byte</span>[]encryption=md5.digest();</span><br><span class="line">            StringBuffer stringBuffer=<span class="keyword">new</span> StringBuffer();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;encryption.length;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(Integer.toHexString(<span class="number">0xff</span> &amp;encryption[i]).length()==<span class="number">1</span>)&#123;</span><br><span class="line">                    stringBuffer.append(<span class="string">"0"</span>).append(Integer.toHexString(<span class="number">0xff</span>&amp;encryption[i]));</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    stringBuffer.append(Integer.toHexString(<span class="number">0xff</span>&amp;encryption[i]));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> stringBuffer.toString();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="comment">//            e.printStackTrace();</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//加密文件</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">md5ForFile</span><span class="params">(File file)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> buffersize = <span class="number">1024</span>;</span><br><span class="line">        FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        DigestInputStream dis = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//创建MD5转换器和文件流</span></span><br><span class="line">            MessageDigest messageDigest =MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">            dis = <span class="keyword">new</span> DigestInputStream(fis,messageDigest);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[buffersize];</span><br><span class="line">            <span class="comment">//DigestInputStream实际上在流处理文件时就在内部就进行了一定的处理</span></span><br><span class="line">            <span class="keyword">while</span> (dis.read(buffer) &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//通过DigestInputStream对象得到一个最终的MessageDigest对象。</span></span><br><span class="line">            messageDigest = dis.getMessageDigest();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 通过messageDigest拿到结果，也是字节数组，包含16个元素</span></span><br><span class="line">            <span class="keyword">byte</span>[] array = messageDigest.digest();</span><br><span class="line">            <span class="comment">// 同样，把字节数组转换成字符串</span></span><br><span class="line">            StringBuilder hex = <span class="keyword">new</span> StringBuilder(array.length * <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">byte</span> b : array) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((b &amp; <span class="number">0xFF</span>) &lt; <span class="number">0x10</span>)&#123;</span><br><span class="line">                    hex.append(<span class="string">"0"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                hex.append(Integer.toHexString(b &amp; <span class="number">0xFF</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> hex.toString();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="RSA加密-非对称"><a href="#RSA加密-非对称" class="headerlink" title="RSA加密 非对称"></a>RSA加密 非对称</h3><p>RSA是一种既可以用于数据加密，也可以用于数字签名的算法 </p>
+<p><a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="noopener">RSA原理一</a><br><a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="noopener">RSA原理二</a></p>
+<p>根据总结可以分为以下几步：</p>
+<p>首先知道：<br>1.计算n的欧拉函数φ(n)的公式：φ(n) = (p-1)<em>(q-1)<br>p和q分别为选取的不相等的两个质数<br>2.e对φ(n)的模反元素d ：指有一个正整数d，可以使得d</em>e被φ(n)除的余数为1 ，即：<br>e*d - 1 = φ(n) * k ，求k的值 </p>
+<ol>
+<li><p>选取两个随机的质数p=61和=q53 （实际的应用中，这两个质数越大，越难破解 ）</p>
+</li>
+<li><p>计算出p和q的乘积n<br>n = 61 * 53 = 3233<br>n的二进制长度称为密钥的长度，3233转成二进制为110010100001，共12位，所以密钥的长度为12，实际应用中RSA的密钥长度一般是1024位，重要的场合为2048位</p>
+</li>
+<li><p>根据公示计算欧拉函数<br>φ(n) = (p-1)(q-1)<br>即 φ(n) = (61-1)*(53-1) = 3120</p>
+</li>
+<li><p>随机选择一个整数e<br>选取的规则为 ：1 &lt; e &lt; φ(n) ,并且e与φ(n) 互质<br>示例中选取了17，通常选择为65537</p>
+</li>
+<li><p>计算e对于φ(n)的模反元素d<br>e*d - 1 = φ(n) * k ，求k<br>可以转化为 ： ex + φ(n)y = 1<br>已知 e = 17， φ(n) = 3120<br>即： 17x + 3210y = 1<br>根据<a href="https://baike.baidu.com/item/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/2029414?fr=kg_qa" target="_blank" rel="noopener">扩展欧几里得算法</a>，得出一组正整数解(x,y) = (2753,-15)，即d=2753</p>
+</li>
+<li><p>将n和e封装成公钥，n和d封装成私钥<br>在本例子中 ：<br>n = 3233，<br>e = 17<br>d = 2753<br>即： 公钥(3233,17) ,私钥(3233，2753)</p>
+</li>
+<li><p>RSA算法的可靠性<br>在生成密钥的过程中，一共出现了六个数字<br>p<br>q<br>n<br>φ(n)<br>e<br>d<br>在六个数字中，公钥用到了两个(n和e)，其他的四个是不公开的，其中最关键的是d，因为n和d组成了私钥，一旦d泄露就等于私钥泄漏</p>
+</li>
+</ol>
+<p>在已知n和e的情况下能不能推算出d呢？<br>根据公式可得 ：<br>（1）ed≡1 (mod φ(n))。只有知道e和φ(n)，才能算出d。<br>（2）φ(n)=(p-1)(q-1)。只有知道p和q，才能算出φ(n)。<br>（3）n=pq。只有将n因数分解，才能算出p和q<br>那么只要是n可以被因数分析，那么就能得出d，也就意味着私钥可以被破解，但是只要密钥足够长，那么RSA加密基本不能被破解</p>
+<p>比如 </p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5se1lqraxj30v40gatc3.jpg" alt></p>
+<p>它等于两个质数的乘积<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g5se2fdkyaj30v80jewi4.jpg" alt></p>
+<p>事实上这是人类已经分解的最大的整数(232个十进制位，768个二进制位)</p>
+<ol start="8">
+<li><p>加密和解密 </p>
+<p>1.加密要使用公钥  (n,e)<br>如果要发送信息m，那么就需要用公钥(n,e)对m进行加密，m必须是整数(字符串可以取ascii值或unicode)，并且m必须小于n</p>
+</li>
+</ol>
+<p>加密即是算出下面公式中的c的值<br><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5sejaeyzkj30va04odfv.jpg" alt></p>
+<p>根据例子中的公钥是(3233,17)，假设m=65，那么<br><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5sejlapv7j30va04cdg0.jp" alt></p>
+<p>c = 2790，实际发送的数据就是2790</p>
+<p>2.使用私钥解密 (n,d)</p>
+<p>当得到加密后的数字2790，用私钥(3233，2753)进行解密</p>
+<p>下面这个公式是可证明恒成立的<br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g5sejzrd2oj30vc04aaa3.jpg" alt></p>
+<p>c的d次方除以n的余数为m。现在，c等于2790，私钥是(3233, 2753)，那么<br><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5segembilj30v604amxd.jpg" alt></p>
+<p>从上面的过程可以得出，如果不知道d那么就没法求出m，知道d就必须分解n，当n足够大的时候分解是极其困难的 。      </p>
+<p>公钥(n,e)只能加密小于n的整数， 如果需要加密的数字大于n，那么<br>1.把长信息分解成若干段，分别加密<br>2.使用另外一种”对称加密”如DES，用这个算法的密钥加密信息，再用RSA加密非对称加密的私钥。</p>
+<p>私钥可以揭秘的证明暂时略过 。。。。。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/07/常见的加密方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-apk瘦身" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,7 +297,12 @@
 
 <p>修改的依据 ： 根据分析 armeabi-v7a主要不兼容ARMv5和ARMv6，目前两种处理器的手机市场占有率很少<br>许多x86设备的手机也可以运行armeabi-v7<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g5qdzpv2zqj321p0u0qcl.jpg" alt></p>
 <h3 id="优化res，asstes目录下的文件"><a href="#优化res，asstes目录下的文件" class="headerlink" title="优化res，asstes目录下的文件"></a>优化res，asstes目录下的文件</h3><p>1.手动的lint检测，手动的删除无用的资源<br>在as中打开”Analyze”选择“Inspect code”手动检索整个项目，删除无用资源（检索之后找到Android Lint 然后找到其下面的Unused resources文件夹）</p>
+<p>2.使用tinypng对图片进行压缩</p>
+<p>3.使用webp格式的图片</p>
+<p>4.在Gradle开启shrinkResources，移无用的资源文件 </p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">buildTypes &#123;</span><br><span class="line">       release &#123;</span><br><span class="line">           <span class="comment">// 不显示Log</span></span><br><span class="line">           buildConfigField <span class="string">"boolean"</span>, <span class="string">"LOG_DEBUG"</span>, <span class="string">"false"</span></span><br><span class="line">           <span class="comment">//混淆</span></span><br><span class="line">           minifyEnabled <span class="keyword">true</span></span><br><span class="line">           <span class="comment">// 移除无用的resource文件</span></span><br><span class="line">           shrinkResources <span class="keyword">true</span></span><br><span class="line">           proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">           signingConfig signingConfigs.release</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="优化classes-dex文件"><a href="#优化classes-dex文件" class="headerlink" title="优化classes.dex文件"></a>优化classes.dex文件</h3>
       
 
       
@@ -1336,91 +1456,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/04/正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-类库基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/类库基础/">类库基础</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/类库基础/" class="archive-article-date">
-  	<time datetime="2019-07-04T10:00:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>基础类 </li>
-<li>系统类 </li>
-<li>工具类</li>
-</ul>
-<h2 id="基础类"><a href="#基础类" class="headerlink" title="基础类"></a>基础类</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>在Java中String类用来表示一个字符串，它是final的不可被继承。同时Java中所有的字符串文字[即字符串常量]都是一个String的对象</p>
-<p>创建String对象的两种方式：<br>String str = “Hello World”;  直接赋值字符串常量。<br>String str = new String(“Hello World”);  通过使用new关键字调用构造方法来实例化字符串对象。</p>
-<p>两种创建方式的区别 ：<br>第一种方法在内存中建立了一个String对象，即字符串常量”Hello  World”。<br>第二种方法在内存中建立了两个String对象，一个是字符串常量”Hello World” ，之所以说建立2个String是因为 参数“Hello World”本身就是一个String 然后又new String了一个。</p>
-<p>常量池(constant pool) 指的是在编译期被确定，并被保存在以编译的.class文件中的一些数据组成的集合。它包括了关于类、方法、接口等中的常量，也包括字符串常量。<br>常量池中的字符串常量是唯一的，在池中不会同时存在两个相同的字符串常量。<br>使用第一种方法创建String对象时，JVM会从常量池中查找出常量”Hello World” 的引用然后赋值给变量str。<br>使用第二种方法创建String对象是很浪费空间 因此 很少用那种方法</p>
-<p>一个特殊的例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	    String a = <span class="string">"A"</span>;</span><br><span class="line">	    String b = <span class="string">"C"</span>;</span><br><span class="line">	    String c = <span class="string">"AC"</span>;</span><br><span class="line">	    a = a+b;</span><br><span class="line">	    System.out.println(a == c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此时的输出结果为false<br>原因 ： 表达式“a+b”的结果是产生一个新的字符串对象”AC”，而变量a和b的指向并没有改变。但是随后又执行了“a = a+b”将新串”AC”的引用赋值给a了。 此时改变的仅仅是a的指向，而不是原来的字符串”A”被改变了，它是常量，不可变，新串”AC”是在程序运行的时候产生的，它存在于堆中，因此他和常量”AC”不是一个</p>
-<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p>在JavaSDK中所有的类都是从Object类派生出来的。<br>如果一个类没有明确的继承一个类 则它默认继承Object类。此为直接继承Object。<br>如果一个类有父类 则它的父类 或 父类的父类….中 总有一个类是直接继承Object。此为间接继承。</p>
-<h2 id="系统类"><a href="#系统类" class="headerlink" title="系统类"></a>系统类</h2><h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p>Java程序是以进程的形式运行在操作系统中的，Runtime类代表当前JVM的运行时环境。Runtime类是Singleton的由JVM来实例化。<br>使用Runtime类可以获取当前进程中JVM的内存状态、操作子进程等     </p>
-<p>Java会周期性的运行垃圾回收器来回收垃圾对象(外界没有持有该对象引用或仅持有弱(虚)引用)，以便释放内存空间。但是若想先于收集器的下一次指定周期来收集废弃的对象，可以通过调用Runtime类的gc()方法来手动运行GC(garbage collector)</p>
-<h3 id="System"><a href="#System" class="headerlink" title="System"></a>System</h3><p>System类是一个系统类。其内的方法和变量都是静态的。其构造方法被隐藏。<br>在 System 类提供的设施中，有标准输入、标准输出和错误输出流；对外部定义的属性和环境变量的访问；加载文件和库的方法；还有快速复制数组的一部分的实用方法</p>
-<h2 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h2><h3 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><p>Arrays是一个数组工具类，其内包含用来操作数组（比如排序和搜索）的各种方法。</p>
-<h3 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h3><p>如果一个自定义类想使用Arrays类的sort方法进行排序 需要实现Comparable接口。</p>
-<h3 id="Math与Random"><a href="#Math与Random" class="headerlink" title="Math与Random"></a>Math与Random</h3><p>Math类在java.lang包中，主要用来执行一些数学运算，如求绝对值、正弦、余弦等。其内的所有方法和字段都是静态的。因此可以使用import static来导入。使用的时候不用再加类名.方法名或类名.变量名。</p>
-<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>篇幅较多 点击跳转 </p>
-<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p>Date表示特定的瞬间，精确到毫秒<br>Calendar是表示一个日历，它是对Date类的一个封装<br>SimpleDateFormat是一个与语言环境有关的方式来格式化和解析日期的具体类</p>
-<h3 id="Robot"><a href="#Robot" class="headerlink" title="Robot"></a>Robot</h3><p>Robot是用于测试自动化，自运行演示过程和其他需要控制鼠标的应用程序生成本机系统输入事件</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/04/类库基础/">展开全文 >></a>
         </p>
       
 
