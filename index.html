@@ -186,7 +186,20 @@
 
 <h3 id="SHA-1加密算法"><a href="#SHA-1加密算法" class="headerlink" title="SHA-1加密算法"></a>SHA-1加密算法</h3><p>SHA-1算法和MD5算法一样，都是由MD4算法导出，他们的特点，缺点，使用场景基本类似。<br>不同点在于SHA-1算法在长度上是40位的十六进制值，即160位的二进制。MD5算法是32位的十六进制，128位的二进制，所以SHA-1对比MD5相对安全   </p>
 <p>使用方法省略。。。。。。</p>
-<h3 id="HMAC加密算法"><a href="#HMAC加密算法" class="headerlink" title="HMAC加密算法"></a>HMAC加密算法</h3><p>概念 ： HMAC算法是一种基于密钥的报文完整性验证的方法。<br>其安全性是建立在hash加密的基础上，要求双方共享密钥，约定算法，对报文进行Hash运算，形成固定长度的认证码。通信的双方通过认证码的校验来确定报文的合法性。<br>HMAC算法可以用作加密，数字签名，报文验证</p>
+<h3 id="HMAC加密算法"><a href="#HMAC加密算法" class="headerlink" title="HMAC加密算法"></a>HMAC加密算法</h3><p>概念 ： HMAC算法是一种基于密钥的报文完整性验证的方法。<br>其安全性是建立在hash加密的基础上，要求双方共享密钥，约定算法，对报文进行Hash运算，形成固定长度的认证码。通信的双方通过认证码的校验来确定报文的合法性。防止数据在传输的过程中被截获，和篡改，维护了数据的完整性，可靠性，和安全性。<br>HMAC算法可以用作加密，数字签名，报文验证</p>
+<p>验证过程概述 ：HMAC加密算法是一种执行”校验和”的算法，它通过对数据进行”求和”来检验数据是否被修改了，在发送数据前，HMAC加密算法对数据块和双方约定的公钥进行”散列操作”,生成”摘要”，附加在待发送的数据中，当数据和摘要到达目的地后，使用HMAC加密算法来生成另一个校验和，如果两个数字匹配，说明数据没有被修改</p>
+<p>HMAC加密算法的定义用公式表示：<br>HMAC（K，M）=H（K⊕opad∣H（K⊕ipad∣M））</p>
+<p>步骤      </p>
+<ol>
+<li>在密钥k后面添加0来创建一个字节长度为B的字符串(str) (如，k的字节长度为20字节，B的字节长度为64，那么就在k后面加上44个零)</li>
+<li>用第一步生成的字符串str和ipad做异或运(istr)</li>
+<li>将数据流data填充到第二步得到的istr的末尾</li>
+<li>将MD5作用与第三步的istr</li>
+<li>将第一步生成的B字节长度的字符str和opad做异或运算(ostr)</li>
+<li>将第四步的结果istr添加到第五步的结果ostr的末尾</li>
+<li>将MD5作用于第六步生成的数据流，得到最终的结果(out)</li>
+</ol>
+<p>HMAC的使用场景<br>HMAC一个典型的应用场景是在”挑战/响应”身份认证中<br>1.由客户端向服务器发送一个验证的请求<br>2.服务器接到请求之后，生成一个随机数并发送给客户端(挑战)<br>3.客户端接到随机数之后提供给epass,有epass中的密钥进行HMAC-MD5运算，得到一个结果作为认证返回给服务器(响应)<br>4.服务器对随机数做同样的操作，并和客户端的响应做对比，验证客户端是否合法</p>
 <h2 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h2><h3 id="RSA加密-非对称"><a href="#RSA加密-非对称" class="headerlink" title="RSA加密 非对称"></a>RSA加密 非对称</h3><p>RSA是一种既可以用于数据加密，也可以用于数字签名的算法 </p>
 <p><a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="noopener">RSA原理一</a><br><a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="noopener">RSA原理二</a></p>
 <p>根据总结可以分为以下几步：</p>
