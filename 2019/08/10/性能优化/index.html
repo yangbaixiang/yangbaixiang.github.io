@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g5xv594l5uj31iq0i2dta.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1g5yeo3b27uj31fe0ew45k.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1g5yewehxrkj31i40q610s.jpg">
-<meta property="og:updated_time" content="2019-08-14T14:59:22.358Z">
+<meta property="og:updated_time" content="2019-08-19T08:31:35.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能优化">
 <meta name="twitter:description" content="界面优化 代码优化  其他优化  界面优化基本概念Fps帧数 ： 画面改变的速度，只要显卡足够强，Fps值就会很高，帧数高画面会流畅，60Fps是显卡1秒钟刷新60次刷新率 ：显卡将显示信号输出刷新的速度，60hz就是每秒显卡向显示器输出60次信号，显卡将刷新率由显示器决定     垂直同步 ：假设帧率是刷新率的1/2，那么意味着屏幕每刷新两次，GPU完成一次绘制刷新率是帧率的1/2，意味着GP">
@@ -203,7 +203,7 @@
 <p>4.ViewStub<br>延迟化加载，ViewStud指向一般情况下不需要显示的布局，只有在需要的时候，ViewStud所指向的布局文件才会被inflate(),并且此时会直接替换掉ViewStud</p>
 <p>5.Merge标签  </p>
 <p>Merge可以减少一个布局层次，但是使用条件是有限制的 ：1.第一种子视图不需要指定任何针对父视图的布局属性，就是说父容器仅仅是个容器，子视图只需要直接添加到父视图上用于显示就行 2.需要在LinearLayout里面嵌入一个布局（或者视图），而恰恰这个布局（或者视图）的根节点也是LinearLayout</p>
-<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><h3 id="ArrayMap"><a href="#ArrayMap" class="headerlink" title="ArrayMap"></a>ArrayMap</h3><p>官方对ArrayMap的说明：它不是一个适应大数据的数据结构，相比传统的HashMap速度要慢，因为查找方法是二分法，并且当你删除或者添加数据时，会对空间重新调整，在使用大量数据时，效率并不明显，低于50%。</p>
+<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><h3 id="ArrayMap"><a href="#ArrayMap" class="headerlink" title="ArrayMap"></a>ArrayMap</h3><p>官方对ArrayMap的说明：它不是一个适应大数据的数据结构，相比传统的HashMap速度要慢，因为查找方法是二分法，并且当你删除或者添加数据时，因为使用了二分查找，所以会对空间重新调整，在使用大量数据时，效率并不明显，低于50%。</p>
 <p>可以理解为ArrayMap是牺牲了时间换取了内存空间,会给内存带来客观的提升 </p>
 <p>HashMap和ArrayMap的存储方式的对比<br>HashMap的存储可见：HashMap</p>
 <p>ArrayMap的存储<br>首先ArrayMap的底层是用两个数组维护的  </p>
@@ -211,6 +211,10 @@
 
 <p>1.算出key的hashCode，存在index下(index就是当前键值对的数量)<br>2.index&lt;&lt; 位置存放key   (index&lt;&lt; index左移1位，即index扩大2倍)<br>3.index&lt;&lt;+1位置存放value</p>
 <p>取元素的时候<br>1.先判断key的hashCode值在不在数组mHashes数组中<br>2.如果存在数组中，那么得到索引index<br>3.通过index&lt;&lt; 和 index&lt;&lt;+1 分别得到key/value</p>
+<h3 id="SparseArray"><a href="#SparseArray" class="headerlink" title="SparseArray"></a>SparseArray</h3><p>官方解释：SparseArray不需要对key和value进行auto-boxing（将原始类型封装为对象类型，比如把int类型封装成Integer类型），结构比HashMap简单（SparseArray内部主要使用两个一维数组来保存数据，一个用来存key，一个用来存value）不需要额外的额外的数据结构</p>
+<p><a href="https://segmentfault.com/a/1190000017920239?utm_source=tag-newest" target="_blank" rel="noopener">SparseArray原理解析</a></p>
+<p>SparseArray：key是int，value是Object。<br>SparseBooleanArray：key是int，value是boolean。<br>SparseIntArray：key是int，value是int。<br>SparseLongArray：key是int，value是long。     </p>
+<h3 id="枚举Enum"><a href="#枚举Enum" class="headerlink" title="枚举Enum"></a>枚举Enum</h3><p><a href="https://www.jianshu.com/p/6052cd4ea9ae" target="_blank" rel="noopener">使用枚举带来什么</a></p>
 
       
 
